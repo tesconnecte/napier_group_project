@@ -8,7 +8,8 @@
        public $birthDate; // person's birth date
        public $albums; // list of person's albums
 
-       public function __construct($id, $firstName, $surname, $email, $password, $birthDate, $albums) {
+       public function __construct($id, $firstName, $surname, $email, $password, $birthDate, $albums)
+       {
          $this->id = $id;
          $this->firstName = $firstName;
          $this->surname = $surname;
