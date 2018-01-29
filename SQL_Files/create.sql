@@ -1,5 +1,5 @@
 /*
-* Execute this file on your local webserver using PHPMySQL portal
+* Execute this file on your local webserver using PHPMyAdmin portal
 * It requires to be done only once
 */
 
