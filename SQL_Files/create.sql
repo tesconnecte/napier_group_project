@@ -1,0 +1,14 @@
+CREATE TABLE  USER (
+ id INT  NOT_NULL AUTO_INCREMENT,
+ firstname VARCHAR(20),
+ surname VARCHAR (20),
+ email VARCHAR (30),
+ password VARCHAR(100),
+ birthdate DATE
+)
+
+CREATE  TABLE ALBUM (
+ id INT  NOT_NULL AUTO_INCREMENT,
+ name VARCHAR (20),
+ isPublic BOOLEAN
+)
