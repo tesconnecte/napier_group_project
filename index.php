@@ -11,5 +11,5 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once ('__class/autoload_Class.php');
-header("Location: home/home.php");
+header("Location: home/index.php");
 die();

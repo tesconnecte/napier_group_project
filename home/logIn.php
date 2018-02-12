@@ -19,7 +19,7 @@
     <div class="container">
     
         <ul class="nav nav-left">
-            <li><a href="index.html"><h2>Snapshot</h2></a></li>
+            <li><a href="index.php"><h2>Snapshot</h2></a></li>
         </ul>
     
         <ul class="nav nav-right">
