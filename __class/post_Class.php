@@ -2,12 +2,13 @@
     class Post {
         public $id; // id of the post
         public $link; // link of the post
-        public $album; // the album the post belongs to
+        public $album; // the album id the post belongs to
 
-        public function __construct($id, $link)
+        public function __construct($id, $link,$album)
         {
             $this->id = $id;
             $this->link = $link;
+            $this->album = $album;
         }
 
         /**

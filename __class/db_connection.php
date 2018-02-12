@@ -16,5 +16,7 @@
     }
     echo json_encode($result) ;*/
     $dao = new DAO();
-    var_dump($dao->getUsers());
+    //var_dump($dao->getAlbum(1));
+    //var_dump($dao->getPost(1));
+    var_dump($dao->getPosts(1));
 ?>
