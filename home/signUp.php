@@ -6,7 +6,6 @@
 
     <link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,latin-ext">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower">
@@ -31,21 +30,30 @@
 </nav>
 
 <div class="container">
-    <h1>Welcome to Posted</h1>
+    <h1>Create Account</h1>
 
-    <a href="signUp.php" class="btn btn-primary">Sign Up</a>
+<div class="logIn">
 
-<!-- Gallery of thumbnails -->
-<div class="featuredAlbums">
-    </br><h3>Featured Albums:</h3>
-        <ul>
-            <li><a href="#"><p>Festival</p><img src="img/fest.jpg" /></li>
-            <li><a href="#"><p>Holiday</p><img src="img/holiday.jpg" /></li>
-            <li><a href="#"><p>Party</p><img src="img/out.jpg" /></li>
-            <li><a href="#"><p>Festival</p><img src="img/fest.jpg" /></li>
-        </ul>
+    <label for="fname">First Name</label>
+    <input type="text" placeholder="Enter First Name" name="fname" required>
+
+    <label for="uname">Surname</label>
+    <input type="text" placeholder="Enter Surname" name="sname" required>
+
+    <label for="uname">Username</label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+
+    <label for="pword">Password</label>
+    <input type="password" placeholder="Enter Password" name="pword" required>
+
+    <label for="cpword">Confirm Password</label>
+    <input type="password" placeholder="Confirm Password" name="cpword" required><br>
+
+    <button class="btn btn-primary">Sign Up</button>
+
+
 </div>
-
+<br>
 </div><!--container-->
 </body>
 </html>

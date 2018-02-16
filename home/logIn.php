@@ -23,7 +23,7 @@
         </ul>
 
         <ul class="nav nav-right">
-            <li><img src="img/logIn.png" height="8%" alt="log in"/><a href="#">Log In</a></li>
+            <li><img src="img/logIn.png" height="8%" alt="log in"/><a href="logIn.php">Log In</a></li>
         </ul>
 
 
