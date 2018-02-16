@@ -3,6 +3,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>Posted</title>
+  <link rel="shortcut icon" type="image/png" href="img/logo2.png"/>
+  <link rel="shortcut icon" type="image/png" href="http://eg.com/logo2.png"/>
 
     <link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
