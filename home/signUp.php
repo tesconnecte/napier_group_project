@@ -40,6 +40,9 @@
     <label for="uname">Surname</label>
     <input type="text" placeholder="Enter Surname" name="sname" required>
 
+    <label for="email">Email</label>
+    <input type="email" placeholder="Enter Email" name="email" required>
+
     <label for="uname">Username</label>
     <input type="text" placeholder="Enter Username" name="uname" required>
 
