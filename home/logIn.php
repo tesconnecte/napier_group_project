@@ -44,11 +44,11 @@ session_start();
 
     <?php if(isset($_GET['error'])){
         if($_GET['error']=='1'){
-            echo ("<h3>Connection error: Please make sure e-mail and password are correct</h3>");
+            echo ("<h3 class='error'>Connection error: Please make sure e-mail and password are correct</h3>");//It would be good to apply a red color to the class error in CSS
         } else if($_GET['error']=='0'){
-            echo ("<h3>Connection error: E-mail or password is not filled</h3>");
+            echo ("<h3 class='error'>Connection error: E-mail or password is not filled</h3>");
         }else{
-            echo ("<h3>Connection error: unknown error, please contact administrator</h3>");
+            echo ("<h3 class='error'>Connection error: unknown error, please contact administrator</h3>");
         }
     } ?>
 
