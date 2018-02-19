@@ -1,7 +1,9 @@
 <?php
-    require_once ("album_Class.php");
-    require_once ("post_class.php");
-    require_once ("personalPost_class.php");
+    //require_once ("album_Class.php");
+    //require_once ("post_class.php");
+    //require_once ("personalPost_class.php");
+    //require_once ("user_Class.php");
+    require_once ("autoload_Class.php");
     class DAO {
         private $db;
         private $dbname = "social_media_memories";
@@ -105,12 +107,60 @@
             return $posts;
         }
 
-        function connection($login,$password)
+        function getUser($id)
         {
-            $req = "select * from login where username='$login' and password='$password';";
-            $sth = $this->db->query($req);
-            $result = $sth->fetchAll(PDO::FETCH_ASSOC);
-            return $result[0];
+            $req = $this->db->prepare("select *
+                                                from user
+                                                where id=:id");
+            $req->execute(array(':id' => $id));
+            $result = $req->fetchAll();
+            if(isset($result)){
+                $user = new User($result[0]['id'],$result[0]['firstname'],$result[0]['surname'],$result[0]['email'],'Hidden',$result[0]['birthdate'],null);
+            }
+            return $user;
+        }
+
+        // Creates an album and adds its associated user to the users that have access to this album
+        function insertAlbum($name,$isPublic,$user)
+        {
+            $req = $this->db->prepare("insert into album(name,isPublic) values(:name,:isPublic);");
+            $req->execute(array(':name' => $name,':isPublic' => $isPublic));
+
+            $req2 = $this->db->prepare("select MAX(id) as id
+                    from album ");
+            $req2->execute();
+            $result2 = $req2->fetchAll();
+
+            $req3 = $this->db->prepare("insert into useralbums values(:user,:albumId);");
+            $req3->execute(array(':user' => $user, ':albumId' => $result2[0]['id']));
+        }
+
+        function insertPost($link,$description,$image,$text,$albumid)
+        {
+            $req = $this->db->prepare("insert into personnalpost(link,description,image,text) values(:link, :desc, :image, :text);");
+            $req->execute(array(':link' => $link, ':desc' => $description, ':image' => $image, ':text' => $text));
+
+            $req2 = $this->db->prepare("select MAX(id) as id
+                    from personnalpost ");
+            $req2->execute();
+            $result2 = $req2->fetchAll();
+
+            $req3 = $this->db->prepare("insert into albumpost values(:albumId,:postId);");
+            $req3->execute(array(':albumId' => $albumid, ':postId' => $result2[0]['id']));
+        }
+
+
+        function connection($email,$password)
+        {
+            $req = $this->db->prepare("select id, firstname, surname, email, birthdate from user where user.email = :e and user.password = :p");
+            $req->execute(array(':e' => $email, ':p' => $password));
+            $result = $req->fetchAll();
+            $user = null;
+            if(!empty($result)){
+                $user = new User($result[0]['id'],$result[0]['firstname'],$result[0]['surname'],$result[0]['email'],'Hidden',$result[0]['birthdate'],null);
+            }
+
+            return $user;
         }
 
 
