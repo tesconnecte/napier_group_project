@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <html>
 <head>
     <link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">
@@ -20,7 +20,6 @@
 
 
 </nav>
-=======
 <!DOCTYPE html>
 <meta charset="utf-8"/>
 
@@ -52,8 +51,7 @@
       </ul>
     </div>
 
-  </nav><!--/.navbar-->
->>>>>>> bf804b10d4c4659922cb671f3158d979f1d46e53
+  </nav><!--/.navbar-->$
 
 
 </div><!--container-->
