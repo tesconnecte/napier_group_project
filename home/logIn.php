@@ -35,7 +35,7 @@
 <div class="container">
     <h1>Log In</h1>
 
-<div class="logIn">
+<form class="logIn" method="post" >
 
     <label for="uname">Username</label>
     <input type="text" placeholder="Enter Username" name="uname" required>
@@ -47,7 +47,7 @@
     <span class="psw">Forgot <a href="#">password?</a></span>
 
 
-</div>
+</form>
 
 </div><!--container-->
 </body>
