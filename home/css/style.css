@@ -1,0 +1,290 @@
+
+/* ------------- basic style ---------------*/
+
+/* basic style */
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #212121;
+  line-height: 1.4;
+  background-color: #F9F9F9;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+.container h1{
+  font-family: "Indie Flower";
+  color: #C2AEB3;
+  text-align: center;
+  font-size: 50px;
+}
+
+.container h3{
+  color: #C2AEB3;
+
+}
+
+/*-------------- navbar ------------------ */
+
+/* navbar */
+.navbar {
+  padding: 20px 0;
+  margin-bottom: 20px;
+  width: 100%;
+  height: auto;
+  background-color: #2196F3;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2ac7d6+14,29db9a+100,7db9e8+100 */
+  background: #2ac7d6; /* Old browsers */
+  background: -moz-linear-gradient(left, #2ac7d6 14%, #29db9a 100%, #7db9e8 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ac7d6', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */
+}
+
+.logo,
+.nav {
+  display: inline-block;
+  margin: 0;
+}
+
+/* nav links */
+.nav {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.nav li {
+  display: inline-block;
+  margin-left: 40px;
+}
+
+.navbar h1{
+  font-family: "Indie Flower";
+}
+
+.navbar a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+.navbar a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: #C2AEB3;
+  text-decoration: none;
+}
+
+/* if you want pull right nav links */
+.nav-right {
+  float: right;
+  line-height: 39px;
+}
+
+
+
+/* responsive */
+@media screen and (max-width: 677px) {
+  .container {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .container {
+    width: 960px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+
+/*---------------Index Button---------------*/
+
+.btn {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2ac7d6+14,29db9a+100,7db9e8+100 */
+  background: #2ac7d6; /* Old browsers */
+  background: -moz-linear-gradient(left, #2ac7d6 14%, #29db9a 100%, #7db9e8 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ac7d6', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */
+    display:block;
+    width:25%;
+    left:40%;
+    margin:0 auto;
+    position:relative;
+    font-style:normal;
+    font-weight:normal;
+    font-family:"Roboto";
+    font-size:14px;
+    outline:none;
+    border:none;
+    text-decoration:none;
+    text-align:center;
+    cursor:pointer;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;
+    background-color:#96aa39;
+    border-bottom:1px solid #7b8b2f;
+}
+
+.btn:hover{
+  background-color: #2ac7d6;
+  box-shadow: 0 9px #999;
+}
+
+/*-----------------Featured Albums----------------------*/
+
+.featuredAlbums {
+   width: 80%;
+   margin: 50px auto;
+   float:left;
+}
+
+.featuredAlbums li {
+   height: 200px;
+   width: 200px;
+   margin: 15px;
+   float: left;
+   overflow: hidden;
+
+   -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+	   border-radius: 50%;
+}
+
+.featuredAlbums li img {
+   margin-top: -150px;
+
+   -webkit-transition: margin 1.5s ease;
+      -moz-transition: margin 1.5s ease;
+       -ms-transition: margin 1.5s ease;
+        -o-transition: margin 1.5s ease;
+           transition: margin 1.5s ease;
+}
+
+.featuredAlbums ul {
+    width:120%;
+    list-style: none;
+}
+
+.featuredAlbums li p {
+   width: 100px;
+   padding: 20px;
+   position: relative;
+   left: 20%;
+   top: 110%; /*set to 110% after this step!*/
+	 font-family: 'Roboto', sans-serif;
+   color: white;
+   text-align: center;
+   font-size: 20px;
+   text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+
+   -webkit-transition: top 0.5s ease;
+      -moz-transition: top 0.5s ease;
+       -ms-transition: top 0.5s ease;
+        -o-transition: top 0.5s ease;
+           transition: top 0.5s ease;
+}
+
+.featuredAlbums li:hover img {
+   margin-left: -150px;
+   margin-top: -150px;
+}
+
+.featuredAlbums li:hover p {
+   top: 75%;
+
+}
+
+/* responsive */
+@media screen and (max-width: 677px) {
+  .featuredAlbums li {
+   height: 80px;
+   width: 80px;
+   margin: 10px;
+   float: left;
+   overflow: hidden;
+
+   -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+	   border-radius: 50%;
+}
+
+.featuredAlbums li p {
+   width: 100px;
+   padding: 20px;
+   position: relative;
+   left: 0%;
+   top: 110%; /*set to 110% after this step!*/
+	 font-family: 'Roboto', sans-serif;
+   color: white;
+   float:center;
+   font-size: 15px;
+   text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+
+   -webkit-transition: top 0.5s ease;
+      -moz-transition: top 0.5s ease;
+       -ms-transition: top 0.5s ease;
+        -o-transition: top 0.5s ease;
+           transition: top 0.5s ease;
+}
+
+}
+
+
+/*--------------------------- Log In -----------------------*/
+
+.logIn input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.logIn label{
+    font-family: "Roboto";
+    color: #C2AEB3;
+}
+
+.logIn btn {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2ac7d6+14,29db9a+100,7db9e8+100 */
+    background: #2ac7d6; /* Old browsers */
+    background: -moz-linear-gradient(left, #2ac7d6 14%, #29db9a 100%, #7db9e8 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ac7d6', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */
+    color: white;
+    right:200%;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
