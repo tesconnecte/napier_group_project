@@ -1,3 +1,10 @@
+<?php
+session_start();
+ if(isset($_SESSION['userid'])){
+     header('Location: ../user_home/index.php');
+ }
+?>
+
 <html>
 <head>
 
@@ -34,6 +41,16 @@
 
 <div class="container">
     <h1>Log In</h1>
+
+    <?php if(isset($_GET['error'])){
+        if($_GET['error']=='1'){
+            echo ("<h3>Connection error: Please make sure e-mail and password are correct</h3>");
+        } else if($_GET['error']=='0'){
+            echo ("<h3>Connection error: E-mail or password is not filled</h3>");
+        }else{
+            echo ("<h3>Connection error: unknown error, please contact administrator</h3>");
+        }
+    } ?>
 
 <form class="logIn" method="post"  action="../login/index.php">
 
