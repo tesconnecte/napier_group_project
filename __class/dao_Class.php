@@ -105,9 +105,9 @@
             return $posts;
         }
 
-        function connection($login,$password)
+        function connection($email,$password)
         {
-            $req = "select * from login where username='$login' and password='$password';";
+            $req = "select * from login where username='$email' and password='$password';";
             $sth = $this->db->query($req);
             $result = $sth->fetchAll(PDO::FETCH_ASSOC);
             return $result[0];

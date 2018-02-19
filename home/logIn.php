@@ -35,7 +35,7 @@
 <div class="container">
     <h1>Log In</h1>
 
-<form class="logIn" method="post" >
+<form class="logIn" method="post"  action="../login/index.php">
 
     <label for="uname">Username</label>
     <input type="text" placeholder="Enter Username" name="uname" required>
