@@ -1,6 +1,6 @@
 <?php include ("../header/htmlhead.php"); ?>
 <link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">
-<link rel="stylesheet" href="css/reset.css" alt="reset" width="50 px" height="50px">
+<!--<link rel="stylesheet" href="css/reset.css" alt="reset" width="50 px" height="50px">-->
 
 <body>
 <?php
