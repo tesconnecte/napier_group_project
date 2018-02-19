@@ -105,6 +105,26 @@
             return $posts;
         }
 
+        // Creates an album and adds its associated user to the users that have access to this album
+        function insertAlbum($name,$isPublic,$user)
+        {
+            $req = $this->db->prepare("insert into album(name,isPublic) values(:name,:isPublic);");
+            $req->execute(array(':name' => $name,':isPublic' => $isPublic));
+
+            $req2 = $this->db->prepare("select MAX(id) as id
+                    from album ");
+            $req2->execute();
+            $result2 = $req2->fetchAll();
+
+            $req3 = $this->db->prepare("insert into useralbums values(:user,:albumId);");
+            $req3->execute(array(':user' => $user, ':albumId' => $result2[0]['id']));
+        }
+
+        function insertPost($link,$description,$image,$text,$albumid)
+        {
+            
+        }
+
         function connection($login,$password)
         {
             $req = "select * from login where username='$login' and password='$password';";
