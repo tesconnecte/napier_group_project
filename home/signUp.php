@@ -1,14 +1,42 @@
+<<<<<<< HEAD
 <?php include ("../header/htmlhead.php"); ?>
 <link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">
+=======
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+
+<head>
+>>>>>>> bf804b10d4c4659922cb671f3158d979f1d46e53
 
 
+<<<<<<< HEAD
 <?php
 include ("../header/header.php");
 ?>
 <head>
+=======
+    <link rel="stylesheet" href="css/reset.css" alt="reset" width="50 px" height="50px">
+>>>>>>> bf804b10d4c4659922cb671f3158d979f1d46e53
     <link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">
 </head>
 <body>
+<<<<<<< HEAD
+=======
+
+  <!-- navbar -->
+  <nav class="navbar">
+
+    <div class="container">
+
+      <h1 class="logo"><a href="index.php">Posted</a></h1>
+      <ul class="nav nav-right">
+        <li><a href="logIn.php">Log In</a></li>
+      </ul>
+    </div>
+
+  </nav><!--/.navbar-->
+
+>>>>>>> bf804b10d4c4659922cb671f3158d979f1d46e53
 <div class="container">
     <h1>Create Account</h1>
 
