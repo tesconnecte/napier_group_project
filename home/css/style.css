@@ -1,9 +1,11 @@
 
 /* ------------- basic style ---------------*/
+
+/* basic style */
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Roboto ', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
   color: #212121;
   line-height: 1.4;
@@ -12,28 +14,29 @@ body {
 
 .container {
   margin: 0 auto;
-  width:100%;
 }
 
-.container h1 {
-    font-family: 'Indie Flower', sans-serif;
-    font-size: 60px;
-    color:#C2AEB3;
-    text-align: center;
+.container h1{
+  font-family: "Indie Flower";
+  color: #C2AEB3;
+  text-align: center;
+  font-size: 50px;
 }
 
-.container h3 {
-    font-weight: thin;
-    color:#C2AEB3;
-}
+.container h3{
+  color: #C2AEB3;
 
+}
 
 /*-------------- navbar ------------------ */
+
+/* navbar */
 .navbar {
-  padding: 0px 0;
+  padding: 20px 0;
   margin-bottom: 20px;
   width: 100%;
   height: auto;
+  background-color: #2196F3;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2ac7d6+14,29db9a+100,7db9e8+100 */
   background: #2ac7d6; /* Old browsers */
   background: -moz-linear-gradient(left, #2ac7d6 14%, #29db9a 100%, #7db9e8 100%); /* FF3.6-15 */
@@ -42,116 +45,56 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ac7d6', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */
 }
 
-.nav h2{
-    font-family: "Indie Flower";
-    font-size:50px;
-    color:#FFF;
-}
-
+.logo,
 .nav {
   display: inline-block;
   margin: 0;
-  text-align: right;
 }
 
 /* nav links */
 .nav {
   padding: 0;
   margin: 0;
-  float: right;
-  display: inline-block;
   list-style: none;
 }
 
-.nav-right ul{
-    margin:0;
-    display:inline;
-    position: absolute;
-    padding:0 0 0 15px;
-
+.nav li {
+  display: inline-block;
+  margin-left: 40px;
 }
 
-.nav-right li {
-  display:inline-block;
-  margin-left: 40px;
-  text-align: right;
-  padding:0px 10px;
-  padding-left: 375px;
+.navbar h1{
+  font-family: "Indie Flower";
 }
 
 .navbar a {
   color: #FFF;
   text-decoration: none;
-  font-size: 20px;
 }
 
-.navbar a:hover {
-  color: #DDD;
+.navbar a {
+  color: #FFF;
   text-decoration: none;
 }
 
+.navbar a:hover {
+  color: #C2AEB3;
+  text-decoration: none;
+}
+
+/* if you want pull right nav links */
 .nav-right {
-  float:right;
+  float: right;
   line-height: 39px;
-  width:50%;
 }
 
-.nav-left {
-    float: left;
-    line-height: 39px;
-}
-
-.nav-left ul{
-    margin:0;
-    display:inline;
-    position: absolute;
-    padding:0 0 0 15px;
-
-}
-
-.nav-left li {
-  display:inline-block;
-  margin-left: 40px;
-  text-align: right;
-  padding-bottom: 0px;
-}
 
 
 /* responsive */
 @media screen and (max-width: 677px) {
   .container {
-    width: 40%;
+    width: 80%;
   }
-
-
-.navbar a {
-  color: #FFF;
-  text-decoration: none;
-  font-size: 25px;
-  display:block;
-}
-
-.nav-right {
-  float:right;
-  line-height: 20px;
-  padding-bottom: 20px;
-
-}
-
-
-.nav-right li {
-  color: #FFF;
-  text-decoration: none;
-  font-size: 20px;
-  padding-left: 175px;
-  padding-top: 5px;
-  width:100%;
-}
-
-.nav-left {
-  visibility: hidden;
-}
-
 }
 
 @media screen and (max-width: 767px) {
@@ -177,6 +120,7 @@ body {
     width: 1170px;
   }
 }
+
 
 /*---------------Index Button---------------*/
 
