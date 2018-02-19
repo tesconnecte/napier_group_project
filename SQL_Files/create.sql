@@ -11,7 +11,7 @@ CREATE TABLE  USER (
  id INT  NOT NULL AUTO_INCREMENT PRIMARY  KEY ,
  firstname VARCHAR(20),
  surname VARCHAR (20),
- email VARCHAR (30) UNIQUE,
+ email VARCHAR (30) UNIQUE NOT NULL,
  password VARCHAR(100),
  birthdate DATE
 );

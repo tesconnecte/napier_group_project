@@ -125,12 +125,18 @@
             
         }
 
-        function connection($login,$password)
+
+        function connection($email,$password)
         {
-            $req = "select * from login where username='$login' and password='$password';";
-            $sth = $this->db->query($req);
-            $result = $sth->fetchAll(PDO::FETCH_ASSOC);
-            return $result[0];
+            $req = $this->db->prepare("select id, firstname, surname, email, birthdate from user where user.email = :e and user.password = :p");
+            $req->execute(array(':e' => $email, ':p' => $password));
+            $result = $req->fetchAll();
+            $user = null;
+            if(isset($result)){
+                $user = new User($result[0]['id'],$result[0]['firstname'],$result[0]['surname'],$result[0]['email'],'Hidden',$result[0]['birthdate'],null);
+            }
+
+            return $user;
         }
 
 
