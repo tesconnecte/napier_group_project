@@ -18,5 +18,5 @@
     $dao = new DAO();
     //var_dump($dao->getAlbum(1));
     //var_dump($dao->getPost(1));
-    $dao->insertPost('link.com','description','image','text',1);
+    var_dump($dao->getUser(1));
 ?>

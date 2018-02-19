@@ -1,7 +1,9 @@
 <?php
-    require_once ("album_Class.php");
-    require_once ("post_class.php");
-    require_once ("personalPost_class.php");
+    //require_once ("album_Class.php");
+    //require_once ("post_class.php");
+    //require_once ("personalPost_class.php");
+    //require_once ("user_Class.php");
+    require_once ("autoload_Class.php");
     class DAO {
         private $db;
         private $dbname = "social_media_memories";
@@ -103,6 +105,19 @@
                 }
             }
             return $posts;
+        }
+
+        function getUser($id)
+        {
+            $req = $this->db->prepare("select *
+                                                from user
+                                                where id=:id");
+            $req->execute(array(':id' => $id));
+            $result = $req->fetchAll();
+            if(isset($result)){
+                $user = new User($result[0]['id'],$result[0]['firstname'],$result[0]['surname'],$result[0]['email'],'Hidden',$result[0]['birthdate'],null);
+            }
+            return $user;
         }
 
         // Creates an album and adds its associated user to the users that have access to this album
