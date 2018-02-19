@@ -27,8 +27,9 @@ try {
 }
 catch(Exception $e)
 {
-    unset($_SESSION['utilisateur']);
-    header('Location: ../controler/page_accueil.ctrl.php');
+    unset($_SESSION['userid']);
+    session_abort();
+    header('Location: ../home/index.php');
 }
 
 ?>

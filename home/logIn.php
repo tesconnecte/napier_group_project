@@ -52,7 +52,7 @@ session_start();
         }
     } ?>
 
-<form class="logIn" method="post"  action="../login/index.php">
+<form class="logIn" method="post"  action="../treatment/login.php">
 
     <label for="uname">Username</label>
     <input type="text" placeholder="Enter Username" name="uname" required>
