@@ -122,7 +122,16 @@
 
         function insertPost($link,$description,$image,$text,$albumid)
         {
-            
+            $req = $this->db->prepare("insert into personnalpost(link,description,image,text) values(:link, :desc, :image, :text);");
+            $req->execute(array(':link' => $link, ':desc' => $description, ':image' => $image, ':text' => $text));
+
+            $req2 = $this->db->prepare("select MAX(id) as id
+                    from personnalpost ");
+            $req2->execute();
+            $result2 = $req2->fetchAll();
+
+            $req3 = $this->db->prepare("insert into albumpost values(:albumId,:postId);");
+            $req3->execute(array(':albumId' => $albumid, ':postId' => $result2[0]['id']));
         }
 
 
