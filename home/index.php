@@ -16,10 +16,10 @@ include ("../header/header.php");
 <div class="featuredAlbums">
     </br><h3>Featured Albums:</h3>
         <ul>
-            <li><a href="#"><p>Festival</p><img src="img/fest.jpg" /></li>
-            <li><a href="#"><p>Holiday</p><img src="img/holiday.jpg" /></li>
-            <li><a href="#"><p>Party</p><img src="img/out.jpg" /></li>
-            <li><a href="#"><p>Festival</p><img src="img/fest.jpg" /></li>
+            <li><a href="#"><p>Festival</p><img src="../__website_content/fest.jpg" /></li>
+            <li><a href="#"><p>Holiday</p><img src="../__website_content/holiday.jpg" /></li>
+            <li><a href="#"><p>Party</p><img src="../__website_content/out.jpg" /></li>
+            <li><a href="#"><p>Festival</p><img src="../__website_content/fest.jpg" /></li>
         </ul>
 </div>
 
