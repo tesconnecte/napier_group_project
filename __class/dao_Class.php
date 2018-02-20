@@ -32,7 +32,7 @@
                     where ua.albumid = :id ");
             $req2->execute(array(':id' => $id));
             $result2 = $req2->fetchAll();
-            if (isset($result)&&isset($result2))
+            if(!empty($result)&&!empty($result2))
             {
                 $album = new Album($result[0]['id'],$result[0]['name'],$result[0]['isPublic'],$result2[0]['userid']);
             }
@@ -50,7 +50,7 @@
                     where ap.postid = :id ");
             $req2->execute(array(':id' => $id));
             $result2 = $req2->fetchAll();
-            if (isset($result)) {
+            if(!empty($result)&&!empty($result2)){
                 $post = new Personalpost($result[0]['id'],$result[0]['link'],$result2[0]['albumid'],$result[0]['description'],$result[0]['image'],$result[0]['text']);
             }
             return $post;
@@ -65,7 +65,7 @@
                                                 and ua.userid = :id");
             $req->execute(array(':id' => $userId));
             $result = $req->fetchAll();
-            if (isset($result)) {
+            if(!empty($result)){
                 $albums = array();
                 for ($i=0; $i<count($result); $i++){
                     $req2 = $this->db->prepare("select ua.userid
@@ -73,9 +73,10 @@
                     where ua.albumid = :id ");
                     $req2->execute(array(':id' => $result[$i]['id']));
                     $result2 = $req2->fetchAll();
-
-                    $album = new Album($result[$i]['id'],$result[$i]['name'],$result[$i]['isPublic'],$result2[0]['userid']);
-                    $albums[$i]=$album;
+                    if(!empty($result2)) {
+                        $album = new Album($result[$i]['id'], $result[$i]['name'], $result[$i]['isPublic'], $result2[0]['userid']);
+                        $albums[$i] = $album;
+                    }
                 }
             }
             return $albums;
@@ -90,7 +91,7 @@
                                                 and ap.albumid = :id");
             $req->execute(array(':id' => $albumId));
             $result = $req->fetchAll();
-            if (isset($result)){
+            if(!empty($result)){
                 $posts = array();
                 for ($i=0; $i<count($result); $i++){
                     $req2 = $this->db->prepare("select ap.albumid
@@ -99,9 +100,10 @@
                     $req2->execute(array(':id' => $result[$i]['id']));
                     $result2 = $req2->fetchAll();
                     //var_dump($result2[0]['albumid']);
-
-                    $post = new Personalpost($result[$i]['id'],$result[$i]['link'],$result2[0]['albumid'],$result[$i]['description'],$result[$i]['image'],$result[$i]['text']);
-                    $posts[$i] = $post;
+                    if(!empty($result2)) {
+                        $post = new Personalpost($result[$i]['id'], $result[$i]['link'], $result2[0]['albumid'], $result[$i]['description'], $result[$i]['image'], $result[$i]['text']);
+                        $posts[$i] = $post;
+                    }
                 }
             }
             return $posts;
@@ -114,7 +116,7 @@
                                                 where id=:id");
             $req->execute(array(':id' => $id));
             $result = $req->fetchAll();
-            if(isset($result)){
+            if(!empty($result)){
                 $user = new User($result[0]['id'],$result[0]['firstname'],$result[0]['surname'],$result[0]['email'],'Hidden',$result[0]['birthdate'],null);
             }
             return $user;
@@ -131,8 +133,10 @@
             $req2->execute();
             $result2 = $req2->fetchAll();
 
-            $req3 = $this->db->prepare("insert into useralbums values(:user,:albumId);");
-            $req3->execute(array(':user' => $user, ':albumId' => $result2[0]['id']));
+            if(!empty($result2)) {
+                $req3 = $this->db->prepare("insert into useralbums values(:user,:albumId);");
+                $req3->execute(array(':user' => $user, ':albumId' => $result2[0]['id']));
+            }
         }
 
         function insertPost($link,$description,$image,$text,$albumid)
@@ -145,10 +149,56 @@
             $req2->execute();
             $result2 = $req2->fetchAll();
 
-            $req3 = $this->db->prepare("insert into albumpost values(:albumId,:postId);");
-            $req3->execute(array(':albumId' => $albumid, ':postId' => $result2[0]['id']));
+            if(!empty($result2)) {
+                $req3 = $this->db->prepare("insert into albumpost values(:albumId,:postId);");
+                $req3->execute(array(':albumId' => $albumid, ':postId' => $result2[0]['id']));
+            }
         }
 
+        function deleteAlbum($id)
+        {
+            $req = $this->db->prepare("delete from album where id=:id;");
+            $req->execute(array(':id' => $id));
+
+            $req2 =  $this->db->prepare("delete from albumpost where albumid=:id;");
+            $req2->execute(array(':id' => $id));
+
+            $req3 =  $this->db->prepare("delete from useralbums where albumid=:id;");
+            $req3->execute(array(':id' => $id));
+        }
+
+        function deletePost($id)
+        {
+            $req = $this->db->prepare("delete from personnalpost where id=:id;");
+            $req->execute(array(':id' => $id));
+
+            $req2 =  $this->db->prepare("delete from albumpost where postid=:id;");
+            $req2->execute(array(':id' => $id));
+        }
+
+        function updateAlbum($id,$name,$isPublic)
+        {
+            $req = $this->db->prepare("Update album set name=:name where id=:id;");
+            $req->execute(array(':name' => $name, ':id' => $id));
+
+            $req2 = $this->db->prepare("Update album set isPublic=:isP where id=:id;");
+            $req2->execute(array(':isP' => $isPublic, ':id' => $id));
+        }
+
+        function updatePost($id,$link,$description,$image,$text)
+        {
+            $req = $this->db->prepare("Update personnalpost set link=:link where id=:id");
+            $req->execute(array(':id' => $id, ':link' => $link));
+
+            $req = $this->db->prepare("Update personnalpost set description=:desc where id=:id");
+            $req->execute(array(':id' => $id, ':desc' => $description));
+
+            $req = $this->db->prepare("Update personnalpost set image=:image where id=:id");
+            $req->execute(array(':id' => $id, ':image' => $image));
+
+            $req = $this->db->prepare("Update personnalpost set text=:text where id=:id");
+            $req->execute(array(':id' => $id, ':text' => $text));
+        }
 
         function connection($email,$password)
         {
