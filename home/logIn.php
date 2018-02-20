@@ -1,41 +1,33 @@
-<html>
-<head>
+<?php
+session_start();
+ if(isset($_SESSION['userid'])){
+     header('Location: ../user_home/index.php');
+ }
+ include ("../header/htmlhead.php");
+?>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>Posted</title>
-
-  <link rel="shortcut icon" type="image/png" href="img/logo2.png"/>
-  <link rel="shortcut icon" type="image/png" href="http://eg.com/logo2.png"/>
-
-    <link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,latin-ext">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower">
-
-</head>
+<link rel="stylesheet" href="../home/css/style.css" alt="style" width="50 px" height="50px">
 <body>
-
-<!-- navbar -->
-<nav class="navbar">
-
-    <div class="container">
-
-        <ul class="nav nav-left">
-            <li><a href="index.php"><h2>Posted</h2></a></li>
-        </ul>
-
-        <ul class="nav nav-right">
-            <li><img src="img/logIn.png" height="8%" alt="log in"/><a href="logIn.php">Log In</a></li>
-        </ul>
-
-
-</nav>
+<?php
+include ("../header/header.php");
+?>
 
 <div class="container">
     <h1>Log In</h1>
 
-<form class="logIn" method="post"  action="../login/index.php">
+    <?php if(isset($_GET['error'])){
+        if($_GET['error']=='1'){
+            echo ("<h3 class='error'>Connection error: Please make sure e-mail and password are correct</h3>");//It would be good to apply a red color to the class error in CSS
+        } else if($_GET['error']=='0'){
+            echo ("<h3 class='error'>Connection error: E-mail or password is not filled</h3>");
+        }else if($_GET['error']=='2'){
+            echo ("<h3 class='error'>Access error: You must be connected to access the page you're trying to reach</h3>");
+        }else{
+            echo ("<h3 class='error'>Connection error: unknown error, please contact administrator</h3>");
+        }
+    } ?>
+
+<form class="logIn" method="post"  action="../__treatment/login.php">
 
     <label for="uname">Username</label>
     <input type="text" placeholder="Enter Username" name="uname" required>

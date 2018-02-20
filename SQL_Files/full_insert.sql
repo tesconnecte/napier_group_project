@@ -1,10 +1,9 @@
-INSERT INTO USER(firstname,surname,email,password,birthdate) VALUES ('Alexis','Canevali', '40326915@live.napier.ac.uk',MD5('alex'),STR_TO_DATE('12-11-1997','%d-%m-%Y'));
-INSERT INTO USER(firstname,surname,email,password,birthdate) VALUES ('Liam','Lyons', '40326973@live.napier.ac.uk',MD5('liam'),STR_TO_DATE('04-11-1996','%d-%m-%Y'));
-INSERT INTO USER(firstname,surname,email,password,birthdate) VALUES ('Ronan','Defours', '40326913@live.napier.ac.uk',MD5('rona'),STR_TO_DATE('07-07-1996','%d-%m-%Y'));
-INSERT INTO USER(firstname,surname,email,password,birthdate) VALUES ('Samm','Laidlaw', '40208441@live.napier.ac.uk',MD5('samm'),STR_TO_DATE('01-01-1999','%d-%m-%Y'));
-INSERT INTO USER(firstname,surname,email,password,birthdate) VALUES ('Jack','Sweeney', '40209035@live.napier.ac.uk',MD5('jack'),STR_TO_DATE('23-07-1997','%d-%m-%Y'));
-INSERT INTO USER(firstname,surname,email,password,birthdate) VALUES ('Iain','Bruce', '40213038@live.napier.ac.uk',MD5('iain'),STR_TO_DATE('24-07-1997','%d-%m-%Y'));
-
+INSERT INTO USER(firstname,surname,email,password,birthdate) VALUES ('Alexis','Canevali', '40326915@live.napier.ac.uk',SHA2('alex',256),STR_TO_DATE('12-11-1997','%d-%m-%Y'));
+INSERT INTO USER(firstname,surname,email,password,birthdate) VALUES ('Liam','Lyons', '40326973@live.napier.ac.uk',SHA2('liam',256),STR_TO_DATE('04-11-1996','%d-%m-%Y'));
+INSERT INTO USER(firstname,surname,email,password,birthdate) VALUES ('Ronan','Defours', '40326913@live.napier.ac.uk',SHA2('rona',256),STR_TO_DATE('07-07-1996','%d-%m-%Y'));
+INSERT INTO USER(firstname,surname,email,password,birthdate) VALUES ('Samm','Laidlaw', '40208441@live.napier.ac.uk',SHA2('samm',256),STR_TO_DATE('01-01-1999','%d-%m-%Y'));
+INSERT INTO USER(firstname,surname,email,password,birthdate) VALUES ('Jack','Sweeney', '40209035@live.napier.ac.uk',SHA2('jack',256),STR_TO_DATE('23-07-1997','%d-%m-%Y'));
+INSERT INTO USER(firstname,surname,email,password,birthdate) VALUES ('Iain','Bruce', '40213038@live.napier.ac.uk',SHA2('iain',256),STR_TO_DATE('24-07-1997','%d-%m-%Y'));
 
 INSERT INTO ALBUM (name,isPublic) VALUES ('Musilac festival',false);
 INSERT INTO ALBUM (name,isPublic) VALUES ('London Trip',false);
