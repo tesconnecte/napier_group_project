@@ -18,5 +18,6 @@
     $dao = new DAO();
     //var_dump($dao->getAlbum(1));
     //var_dump($dao->getPost(1));
-    var_dump($dao->getUser(1));
+    $dao->updatePost(4,'updated', 'updated', 'updated', 'updated');
+
 ?>

@@ -155,6 +155,50 @@
             }
         }
 
+        function deleteAlbum($id)
+        {
+            $req = $this->db->prepare("delete from album where id=:id;");
+            $req->execute(array(':id' => $id));
+
+            $req2 =  $this->db->prepare("delete from albumpost where albumid=:id;");
+            $req2->execute(array(':id' => $id));
+
+            $req3 =  $this->db->prepare("delete from useralbums where albumid=:id;");
+            $req3->execute(array(':id' => $id));
+        }
+
+        function deletePost($id)
+        {
+            $req = $this->db->prepare("delete from personnalpost where id=:id;");
+            $req->execute(array(':id' => $id));
+
+            $req2 =  $this->db->prepare("delete from albumpost where postid=:id;");
+            $req2->execute(array(':id' => $id));
+        }
+
+        function updateAlbum($id,$name,$isPublic)
+        {
+            $req = $this->db->prepare("Update album set name=:name where id=:id;");
+            $req->execute(array(':name' => $name, ':id' => $id));
+
+            $req2 = $this->db->prepare("Update album set isPublic=:isP where id=:id;");
+            $req2->execute(array(':isP' => $isPublic, ':id' => $id));
+        }
+
+        function updatePost($id,$link,$description,$image,$text)
+        {
+            $req = $this->db->prepare("Update personnalpost set link=:link where id=:id");
+            $req->execute(array(':id' => $id, ':link' => $link));
+
+            $req = $this->db->prepare("Update personnalpost set description=:desc where id=:id");
+            $req->execute(array(':id' => $id, ':desc' => $description));
+
+            $req = $this->db->prepare("Update personnalpost set image=:image where id=:id");
+            $req->execute(array(':id' => $id, ':image' => $image));
+
+            $req = $this->db->prepare("Update personnalpost set text=:text where id=:id");
+            $req->execute(array(':id' => $id, ':text' => $text));
+        }
 
         function connection($email,$password)
         {
