@@ -19,7 +19,5 @@
     //var_dump($dao->getAlbum(1));
     //var_dump($dao->getPost(1));
     //$dao->insertPost('link','description','image','text',5);
-    $dao->insertAlbum('name',true,1);
-    $dao->deleteAlbum(8);
-
+    $dao->insertUser('test','test','test','test','12-11-1997');
 ?>

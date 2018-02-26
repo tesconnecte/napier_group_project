@@ -122,6 +122,13 @@
             return $user;
         }
 
+        // Creates a user
+        function insertUser($firstName, $surname, $email, $password, $birthDate)
+        {
+            $req = $this->db->prepare("insert into user(firstname,surname,email,password,birthdate) values(:fn,:sn,:em,:pw,STR_TO_DATE(:bd,'%d-%m-%Y'));");
+            $req->execute(array(':fn' => $firstName,':sn' => $surname,':em' => $email, ':pw' => $password, ':bd' => $birthDate));
+        }
+
         // Creates an album and adds its associated user to the users that have access to this album
         function insertAlbum($name,$isPublic,$user)
         {
