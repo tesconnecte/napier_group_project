@@ -1,5 +1,10 @@
-
-<?php include ("../header/htmlhead.php"); ?>
+<?php
+session_start();
+if(isset($_SESSION['userid'])){
+    header('Location: ../user_home/index.php');
+}
+include ("../header/htmlhead.php");
+?>
 <link rel="stylesheet" href="../home/css/style.css" alt="style" width="50 px" height="50px">
 
 <body>

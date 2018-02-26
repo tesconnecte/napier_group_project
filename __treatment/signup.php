@@ -25,7 +25,7 @@
 
                     if($userExisting==null){
                         try {
-                            $dao->insertUser(trim($_POST['fname']),trim($_POST['sname']),trim($_POST['email']),hash("sha256",trim($_POST['pword'])),trim($_POST['date']));
+                            $dao->insertUser(trim($_POST['fname']),trim($_POST['sname']),trim($_POST['email']),hash("sha256",trim($_POST['pword'])),trim($_POST['ubday']));
                             header('Location: ../signup_complete/index.php');
                         } catch(Exception $e){
                             unset($_SESSION['userid']);
