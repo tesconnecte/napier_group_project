@@ -9,42 +9,41 @@
     session_start();
     if (isset($_SESSION['userid'])) {
         header('Location: ../user_home/index.php');
-    } else if ((isset($_POST['fname']))&&(isset($_POST['sname']))&&(isset($_POST['email']))&&(isset($_POST['pword']))&&(isset($_POST['cpword']))) {
+    } elseif ((isset($_POST['fname']))&&(isset($_POST['sname']))&&(isset($_POST['email']))&&(isset($_POST['pword']))&&(isset($_POST['cpword']))&&(isset($_POST['ubday']))) {
         if((trim($_POST['pword']))==(trim($_POST['cpword']))){
             $dao = new DAO();
             $userExisting = null;//Provisionnary code, waiting for getUserByEmail method to be available
 
-           /* try{
-                $userExisting = $dao->getUserByEmail($_POST['email']);
-            } catch(Exception $e){
-                unset($_SESSION['userid']);
-                session_abort();
-                header('Location: ../home/index.php');
-            }*/
+            $ubirthdate = trim($_POST['ubday']);
 
+            list($ubirthdateday, $ubirthdatemonth, $ubirthdateyear) = explode('-', $ubirthdate);
 
-            if($userExisting==null){
-                try {
-                    //$dao->insertUser();
+            if(checkdate($ubirthdatemonth, $ubirthdateday, $ubirthdateyear)){//Checking the date has the good format and exists
+                try{
+                    $userExisting = $dao->getUserByEmail(trim($_POST['email']));
+
+                    if($userExisting==null){
+                        try {
+                            $dao->insertUser(trim($_POST['fname']),trim($_POST['sname']),trim($_POST['email']),trim($_POST['pword']),hash("sha256",trim($_POST['pword'])),trim($_POST['date']));
+                        } catch(Exception $e){
+                            unset($_SESSION['userid']);
+                            session_abort();
+                            header('Location: ../home/signUp.php?error=dberror&msg='.$e->getMessage());
+                        }
+                    } else {
+                        header('Location: ../home/signUp.php?error=2');
+                    }
                 } catch(Exception $e){
                     unset($_SESSION['userid']);
                     session_abort();
-                    header('Location: ../home/index.php');
+                    header('Location: ../home/signUp.php?error=dberror&msg='.$e->getMessage());
                 }
+            }else{
+                header('Location: ../home/signUp.php?error=3');
             }
-
         }else{
-
+            header('Location: ../home/signUp.php?error=1');
         }
-        $dao = new DAO();
-        $user = $dao->connection($_POST['uname'], hash("sha256",$_POST['pword']));
-        if($user!=null){
-            session_start();
-            $_SESSION["userid"]=$user->getId();
-            header('Location: ../user_home/index.php');
-        }else{
-            header('Location: ../home/logIn.php?error=1');
-        }
-    }else{
-        header('Location: ../home/logIn.php?error=0');
+    } else {
+        header('Location: ../home/signUp.php?error=0');
     }
