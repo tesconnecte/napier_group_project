@@ -10,12 +10,12 @@ include ("../header/header.php");
 <div class="container">
     <h1>Create Account</h1>
 
-<div class="logIn">
+<div class="logIn" action="../__treatment.php">
 
     <label for="fname">First Name</label>
     <input type="text" placeholder="Enter First Name" name="fname" required>
 
-    <label for="uname">Surname</label>
+    <label for="sname">Surname</label>
     <input type="text" placeholder="Enter Surname" name="sname" required>
 
     <label for="email">Email</label>

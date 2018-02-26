@@ -10,10 +10,9 @@ try {
     session_start();
     if (isset($_SESSION['userid'])) {
         header('Location: ../user_home/index.php');
-    } else if (isset($_POST['uname'])&&($_POST['pword'])) {
+    } else if ((isset($_POST['uname']))&&(isset($_POST['pword']))) {
         $dao = new DAO();
         $user = $dao->connection($_POST['uname'], hash("sha256",$_POST['pword']));
-        var_dump($user);
         if($user!=null){
             session_start();
             $_SESSION["userid"]=$user->getId();
