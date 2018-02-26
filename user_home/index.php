@@ -36,15 +36,22 @@ if(!isset($_SESSION['userid'])){
 
         } else {
             $current_album;
-            $posts = $dao->getPosts($current_album->getId);
             for ($i = 0; $i < count($albums); ++$i) {
                 $current_album = $albums[$i];
+                $posts = $dao->getPosts($current_album->getId());
                 echo(" <div>");
                 echo(" <h2>" . $current_album->getName() . "</h2>");
                 if ($current_album->getisPublic() == 1) {
                     echo("<p>Public</p>");
                 } else {
                     echo("<p>Private</p>");
+                }
+                echo("<h4> My posts </h4>");
+                for ($i = 0; $i < count($posts); ++$i) {
+                    $current_post = $posts[$i];
+                    echo(" <div>");
+                    echo(" <p>" . $current_post->getDescription() . "</p>");
+                    echo("</div>");
                 }
                 echo("</div>");
 
