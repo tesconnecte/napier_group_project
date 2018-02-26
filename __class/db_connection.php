@@ -19,5 +19,5 @@
     //var_dump($dao->getAlbum(1));
     //var_dump($dao->getPost(1));
     //$dao->insertPost('link','description','image','text',5);
-    $dao->insertUser('test','test','test','test','12-11-1997');
+    var_dump($dao->getUserByEmail('40326973@live.napier.ac.uk'));
 ?>
