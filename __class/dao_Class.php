@@ -157,23 +157,23 @@
 
         function deleteAlbum($id)
         {
-            $req = $this->db->prepare("delete from album where id=:id;");
-            $req->execute(array(':id' => $id));
-
             $req2 =  $this->db->prepare("delete from albumpost where albumid=:id;");
             $req2->execute(array(':id' => $id));
 
             $req3 =  $this->db->prepare("delete from useralbums where albumid=:id;");
             $req3->execute(array(':id' => $id));
+
+            $req = $this->db->prepare("delete from album where id=:id;");
+            $req->execute(array(':id' => $id));
         }
 
         function deletePost($id)
         {
-            $req = $this->db->prepare("delete from personnalpost where id=:id;");
-            $req->execute(array(':id' => $id));
-
             $req2 =  $this->db->prepare("delete from albumpost where postid=:id;");
             $req2->execute(array(':id' => $id));
+
+            $req = $this->db->prepare("delete from personnalpost where id=:id;");
+            $req->execute(array(':id' => $id));
         }
 
         function updateAlbum($id,$name,$isPublic)

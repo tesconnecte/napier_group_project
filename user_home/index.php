@@ -36,6 +36,7 @@ if(!isset($_SESSION['userid'])){
 
         } else {
             $current_album;
+            $posts = $dao->getPosts($current_album->getId);
             for ($i = 0; $i < count($albums); ++$i) {
                 $current_album = $albums[$i];
                 echo(" <div>");

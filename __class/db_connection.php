@@ -18,6 +18,8 @@
     $dao = new DAO();
     //var_dump($dao->getAlbum(1));
     //var_dump($dao->getPost(1));
-    $dao->updatePost(4,'updated', 'updated', 'updated', 'updated');
+    //$dao->insertPost('link','description','image','text',5);
+    $dao->insertAlbum('name',true,1);
+    $dao->deleteAlbum(8);
 
 ?>
