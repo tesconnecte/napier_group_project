@@ -65,8 +65,8 @@
                                                 and ua.userid = :id");
             $req->execute(array(':id' => $userId));
             $result = $req->fetchAll();
+            $albums = array();
             if(!empty($result)){
-                $albums = array();
                 for ($i=0; $i<count($result); $i++){
                     $req2 = $this->db->prepare("select ua.userid
                     from Useralbums ua 

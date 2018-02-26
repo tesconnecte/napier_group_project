@@ -5,6 +5,7 @@
  * Date: 26/02/2018
  * Time: 14:25
  */
+    require_once ("../__class/autoload_Class.php");
 
     session_start();
     if (isset($_SESSION['userid'])) {
@@ -24,7 +25,8 @@
 
                     if($userExisting==null){
                         try {
-                            $dao->insertUser(trim($_POST['fname']),trim($_POST['sname']),trim($_POST['email']),trim($_POST['pword']),hash("sha256",trim($_POST['pword'])),trim($_POST['date']));
+                            $dao->insertUser(trim($_POST['fname']),trim($_POST['sname']),trim($_POST['email']),hash("sha256",trim($_POST['pword'])),trim($_POST['date']));
+                            header('Location: ../signup_complete/index.php');
                         } catch(Exception $e){
                             unset($_SESSION['userid']);
                             session_abort();

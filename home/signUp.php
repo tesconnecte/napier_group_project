@@ -20,6 +20,8 @@ include ("../header/header.php");
             echo ("<h3 class='error'>Account creation error: Passwords do not match</h3>");
         }else if($_GET['error']=='2'){
             echo ("<h3 class='error'>Account creation error: An account with this email already exists. Log in.</h3>");
+        }else if($_GET['error']=='3'){
+            echo ("<h3 class='error'>Account creation error: Date format is not correct or date does not exist.</h3>");
         }else if(($_GET['error']=='dberror')&&(isset($_GET['msg']))){
             echo ("<h3 class='error'>Server error : ". $_GET['msg'] ."</h3>");
         }else if($_GET['error']=='dberror'){
@@ -29,7 +31,7 @@ include ("../header/header.php");
         }
     } ?>
 
-<div class="logIn" action="../__treatment.php">
+<form class="logIn" action="../__treatment/signup.php" method="post">
 
     <label for="fname">First Name</label>
     <input type="text" placeholder="Enter First Name" name="fname" required>
@@ -55,7 +57,7 @@ include ("../header/header.php");
     <button class="btn btn-primary">Sign Up</button>
 
 
-</div>
+</form>
 <br>
 </div><!--container-->
 </body>
