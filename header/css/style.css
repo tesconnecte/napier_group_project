@@ -1,15 +1,19 @@
-/*-------------- navbar ------------------ */
 .navbar {
-  padding: 0px 0;
+  padding: 20px 0;
   margin-bottom: 20px;
   width: 100%;
-  height: auto;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2ac7d6+14,29db9a+100,7db9e8+100 */
+  height: 15%;
   background: #2ac7d6; /* Old browsers */
   background: -moz-linear-gradient(left, #2ac7d6 14%, #29db9a 100%, #7db9e8 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(left, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to right, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ac7d6', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */
+}
+
+.logo,
+.nav {
+  display: inline-block;
+  margin: 0;
 }
 
 .nav h2{
@@ -18,110 +22,41 @@
     color:#FFF;
 }
 
-.nav {
-  display: inline-block;
-  margin: 0;
-  text-align: right;
-}
-
 /* nav links */
 .nav {
   padding: 0;
   margin: 0;
-  float: right;
-  display: inline-block;
   list-style: none;
 }
 
-.nav-right ul{
-    margin:0;
-    display:inline;
-    position: absolute;
-    padding:0 0 0 15px;
-
-}
-
-.nav-right li {
-  display:inline-block;
+.nav li {
+  display: inline-block;
   margin-left: 40px;
-  text-align: right;
-  padding:0px 10px;
-  padding-left: 375px;
 }
 
 .navbar a {
   color: #FFF;
+  font-size:20px;
   text-decoration: none;
-  font-size: 20px;
 }
 
 .navbar a:hover {
   color: #DDD;
-  text-decoration: none;
 }
 
+/* if you want pull right nav links */
 .nav-right {
-  float:right;
+  float: right;
   line-height: 39px;
-  width:50%;
 }
 
-.nav-left {
-    float: left;
-    line-height: 39px;
-}
-
-.nav-left ul{
-    margin:0;
-    display:inline;
-    position: absolute;
-    padding:0 0 0 15px;
-
-}
-
-.nav-left li {
-  display:inline-block;
-  margin-left: 40px;
-  text-align: right;
-  padding-bottom: 0px;
-}
 
 
 /* responsive */
 @media screen and (max-width: 677px) {
   .container {
-    width: 40%;
+    width: 80%;
   }
-
-
-.navbar a {
-  color: #FFF;
-  text-decoration: none;
-  font-size: 25px;
-  display:block;
-}
-
-.nav-right {
-  float:right;
-  line-height: 20px;
-  padding-bottom: 20px;
-
-}
-
-
-.nav-right li {
-  color: #FFF;
-  text-decoration: none;
-  font-size: 20px;
-  padding-left: 175px;
-  padding-top: 5px;
-  width:100%;
-}
-
-.nav-left {
-  visibility: hidden;
-}
-
 }
 
 @media screen and (max-width: 767px) {

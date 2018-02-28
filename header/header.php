@@ -18,7 +18,7 @@ require_once ("../__class/autoload_Class.php");
         </ul>
         <ul class="nav nav-right">
             <li>
-        <img src="../__website_content/logIn.png" height="8%" alt="log in"/><a href="../home/logIn.php">Log In</a>
+        <a href="../home/logIn.php">Log In</a>
   <?php  } else{
         $dao = new DAO();
         $user = $dao->getUser($_SESSION['userid']);
