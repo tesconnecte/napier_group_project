@@ -247,7 +247,7 @@ body {
   display: block;
   width: 200px;
   transition: .1s transform;
-  transform: translateZ(0); /* hack */
+  transform: translateZ(0);
 }
 
 .gallery div:hover {
