@@ -36,7 +36,7 @@ include ("../header/header.php");
 
     <button class="btn btn-primary">Log In</button><br>
 
-    <span class="psw">Forgot <a href="#">password?</a></span>
+    <span class="psw"><a href="#">Forgot password?</a></span>
 
 
 </form>
