@@ -2,17 +2,19 @@
 
 require_once('C:\xampp\htdocs\napier_group_project\__class\twitter-api-php-master\TwitterAPIExchange.php');
 
-/** Set access tokens here - see: https://dev.twitter.com/apps/ **/
 $settings = array(
-    'oauth_access_token' => "YOUR_OAUTH_ACCESS_TOKEN",
-    'oauth_access_token_secret' => "YOUR_OAUTH_ACCESS_TOKEN_SECRET",
-    'consumer_key' => "YOUR_CONSUMER_KEY",
-    'consumer_secret' => "YOUR_CONSUMER_SECRET"
+    'oauth_access_token' => "970953751258390528-Z3ETeETyI0Ey00VOVtCDtb5PmcYCIET",
+    'oauth_access_token_secret' => "41VdBHgK8m46SFOxVpK71jJGEmJdzdp4eQT4cLDGTQ5cL",
+    'consumer_key' => "axntszug8MrAJxHtmPvuNRpK0",
+    'consumer_secret' => "u0tuuJJ2DSLiuIugVW95UGhTKSXNDGtieIlP83Q5fM6gcrCWdD"
 );
 
-$url = "https://publish.twitter.com/oembed?url=https://twitter.com/Twitter/status/970476456139608064";
+$url = "https://api.twitter.com/1.1/statuses/show.json";
+$getfield = '?id=970476456139608064';
 $requestMethod = "GET";
 
 $twitter = new TwitterAPIExchange($settings);
-echo $twitter->buildOauth($url, $requestMethod)
+echo $twitter->setGetfield($getfield)
+    ->buildOauth($url, $requestMethod)
     ->performRequest();
+?>
