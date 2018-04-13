@@ -21,7 +21,7 @@ $requestMethod = "GET";
 $twitter = new TwitterAPIExchange($settings);
 $parameters = $twitter->setGetfield($getfield)
     ->buildOauth($req, $requestMethod)
-    ->performRequest(); // GEts all the attributes and data of a tweet
+    ->performRequest(); // Gets all the attributes and data of a tweet
 
 
 $curl = curl_init();

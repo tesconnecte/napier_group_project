@@ -49,9 +49,26 @@ if(!isset($_SESSION['userid'])){
                 echo("<h4> My posts </h4>");
                 for ($i = 0; $i < count($posts); ++$i) {
                     $current_post = $posts[$i];
-                    echo(" <div>");
-                    echo(" <p>" . $current_post->getDescription() . "</p>");
-                    echo("</div>");
+                    if(!empty($current_post->getLink())) {
+                        $link = $current_post->getLink();
+
+                        if (strpos($link, 'facebook') !== false) {
+
+                        } elseif (strpos($link, 'twitter') !== false) {
+
+                        } elseif (strpos($link, 'instagram') !== false) {
+
+                        } else {
+                            echo(" <div>");
+                            echo(" <p>" . $current_post->getDescription() . "</p>");
+                            echo("</div>");
+                        }
+                    }
+                    else {
+                        echo(" <div>");
+                        echo(" <p>" . $current_post->getDescription() . "</p>");
+                        echo("</div>");
+                    }
                 }
                 echo("</div>");
 
