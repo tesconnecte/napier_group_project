@@ -2,8 +2,10 @@
 
 require_once('C:\xampp\htdocs\napier_group_project\__class\twitter-api-php-master\TwitterAPIExchange.php');
 
-$url = "https://twitter.com/PolaroidFrance/status/984753026048102400";
-$id = substr($url, strrpos($url, "/") + 1); //gets id of the tweet using the url
+$urlTwitter = "https://twitter.com/PolaroidFrance/status/984753026048102400";
+$id = substr($urlTwitter, strrpos($urlTwitter, "/") + 1); //gets id of the tweet using the url
+$urlFacebook = "https://www.facebook.com/LICORNEGrenoble/photos/a.973545789350309.1073741830.955836854454536/1785330678171812/?type=3";
+$urlInstagram = "https://www.instagram.com/p/BhZRfRnFl0V/";
 
 $settings = array(
     'oauth_access_token' => "970953751258390528-Z3ETeETyI0Ey00VOVtCDtb5PmcYCIET",
@@ -25,7 +27,7 @@ $parameters = $twitter->setGetfield($getfield)
 $curl = curl_init();
 curl_setopt_array($curl, array(
     CURLOPT_RETURNTRANSFER => 1,
-    CURLOPT_URL => 'https://publish.twitter.com/oembed?url='.$url
+    CURLOPT_URL => 'https://publish.twitter.com/oembed?url='.$urlTwitter
 ));
 $result = curl_exec($curl);
 curl_close($curl);
@@ -37,12 +39,13 @@ $textParameter = $parameters['text'];
 //var_dump($result);
 echo($result['html']); // Displays the embedded tweet
 
+
 ?>
 
 <div>
     <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5"async></script>
     <script async defer src="//www.instagram.com/embed.js"></script>
     <div class="fb-post"
-         data-href="https://www.facebook.com/LICORNEGrenoble/photos/a.973545789350309.1073741830.955836854454536/1785330678171812/?type=3"></div>
-    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/BhZRfRnFl0V/" data-instgrm-version="8" ></blockquote>
+         data-href="<?php echo $urlFacebook ?>"></div>
+    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="<?php echo $urlInstagram ?>" data-instgrm-version="8" ></blockquote>
 </div>

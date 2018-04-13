@@ -161,6 +161,7 @@
 
         function insertPost($link,$description,$image,$text,$albumid)
         {
+
             $req = $this->db->prepare("insert into personnalpost(link,description,image,text) values(:link, :desc, :image, :text);");
             $req->execute(array(':link' => $link, ':desc' => $description, ':image' => $image, ':text' => $text));
 
