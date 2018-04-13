@@ -27,4 +27,18 @@ $result = curl_exec($curl);
 curl_close($curl);
 $result = json_decode($result, true);
 echo($result['html']);
+
 ?>
+
+<div>
+    <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5"async></script>
+    <div class="fb-post"
+         data-href="https://www.facebook.com/LICORNEGrenoble/photos/a.973545789350309.1073741830.955836854454536/1785330678171812/?type=3"
+         data-width="500"></div>
+    <div class="fb-post"
+         data-href="https://www.facebook.com/Pianitza/photos/a.500284130035886.1073741825.500280596702906/1755653667832253/?type=3"
+         data-width="500"></div>
+    <div class="fb-post"
+         data-href="https://www.facebook.com/la.demeure.du.chaos.theabodeofchaos999/photos/a.419850215978.219880.62396175978/10156328600345979/?type=3"
+         data-width="500"></div>
+</div>
