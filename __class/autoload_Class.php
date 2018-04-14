@@ -8,7 +8,7 @@
 
 spl_autoload_register(
     function ( $class ) {
-        include_once $class . '_Class.php';
+        include_once strtolower($class ). '_Class.php';
         //include_once( 'functions.php' );
     }
 );
