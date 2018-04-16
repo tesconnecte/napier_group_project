@@ -25,6 +25,8 @@ if(!isset($_SESSION['userid'])){
     <html>
     <head>
         <link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">
+        <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5"async></script>
+        <script async defer src="//www.instagram.com/embed.js"></script>
     </head>
     <body>
     <h1>Welcome on Posted <?php echo($str_usr_name) ?></h1>
@@ -53,11 +55,21 @@ if(!isset($_SESSION['userid'])){
                         $link = $current_post->getLink();
 
                         if (strpos($link, 'facebook') !== false) {
-
+                            echo("<div class=\"fb-post\"data-href=\"".$urlFacebook."\"></div>");
                         } elseif (strpos($link, 'twitter') !== false) {
+                            $curl = curl_init();
+                            curl_setopt_array($curl, array(
+                                CURLOPT_RETURNTRANSFER => 1,
+                                CURLOPT_URL => 'https://publish.twitter.com/oembed?url='.$link
+                            ));
+                            $result = curl_exec($curl);
+                            curl_close($curl);
+
+                            $result = json_decode($result, true);
+                            echo($result['html']); // Displays the embedded tweet
 
                         } elseif (strpos($link, 'instagram') !== false) {
-
+                            echo("<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"".$urlInstagram."\" data-instgrm-version=\"8\" ></blockquote>");
                         } else {
                             echo(" <div>");
                             echo(" <p>" . $current_post->getDescription() . "</p>");
