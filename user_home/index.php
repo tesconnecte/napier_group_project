@@ -76,6 +76,71 @@ if(!isset($_SESSION['userid'])){
         }
         ?>
     </section>
+
+    <div class="container"> <!-- Jack's Code -->
+
+        <h1>Welcome Back, username</h1>
+
+    <div class="userButtons">
+        <button class="btn btn-primary btnNewAlbum">New Album</button>
+        <input class="userSearch" type="text" placeholder="Search Albums" name="search" required>
+        <button class="btn btn-primary btnAddPosts">Add Post</button>
+    </div>
+
+
+      <div class="userGallery cf galleryLeft">
+        <h3>Music Festival</h3>
+      <div>
+        <img src="../__website_content/lorem.jpg" /> <!-- Not sure whether or not posts will be displayed -->
+      </div>                                            <!-- as images or text but this should fit both -->
+      <div>
+        <img src="../__website_content/lorem.jpg" />
+      </div>
+      <div>
+        <img src="../__website_content/lorem.jpg" />
+      </div>
+      <div>
+        <img src="../__website_content/lorem.jpg" />
+      </div>
+      <div>
+        <img src="../__website_content/lorem.jpg" />
+      </div>
+      <div>
+        <img src="../__website_content/lorem.jpg" />
+      </div>
+      <button class="btn btn-primary btnAP">Add Post</button>
+      <button class="btn btn-primary btnEA">Edit Album</button><br>
+    </div>
+
+
+      <div class="userGallery cf galleryRight">
+        <h3>Napier</h3>
+      <div>
+        <img src="../__website_content/lorem.jpg" /> <!-- Not sure whether or not posts will be displayed -->
+      </div>                                            <!-- as images or text but this should fit both -->
+      <div>
+        <img src="../__website_content/lorem.jpg" />
+      </div>
+      <div>
+        <img src="../__website_content/lorem.jpg" />
+      </div>
+      <div>
+        <img src="../__website_content/lorem.jpg" />
+      </div>
+      <div>
+        <img src="../__website_content/lorem.jpg" />
+      </div>
+      <div>
+        <img src="../__website_content/lorem.jpg" />
+      </div>
+      <button class="btn btn-primary btnAP">Add Post</button>
+      <button class="btn btn-primary btnEA">Edit Album</button><br>
+    </div>
+
+    <div class="loadMore">
+    <button class="btn btn-primary">Load More</button>
+    </div>
+
     </body>
     </html>
     <?php

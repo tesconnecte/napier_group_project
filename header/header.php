@@ -22,12 +22,10 @@ require_once ("../__class/autoload_Class.php");
   <?php  } else{
         $dao = new DAO();
         $user = $dao->getUser($_SESSION['userid']);
-
         $str_usr_firstname = $user->getFirstName();
         $str_usr_lastname = $user->getSurname();
         $str_usr_firstname_length = strlen($str_usr_firstname);
         $str_usr_lastname_length = strlen($str_usr_lastname);
-
         if (($str_usr_firstname_length+$str_usr_lastname_length+1)<=10){
             $str_usr_name = $str_usr_firstname." ".$str_usr_lastname;
         } elseif (($str_usr_firstname_length<=8)&&($str_usr_firstname_length+$str_usr_lastname_length+1)>10){
@@ -37,7 +35,6 @@ require_once ("../__class/autoload_Class.php");
         } else {
             $str_usr_name = substr($str_usr_firstname,0,10);
         }
-
         ?>
             <li><a href="../user_home/index.php"><h2>Posted</h2></a></li>
         </ul>
