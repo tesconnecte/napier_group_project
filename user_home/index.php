@@ -53,7 +53,6 @@ if(!isset($_SESSION['userid'])){
                     $current_post = $posts[$i];
                     if(!empty($current_post->getLink())) {
                         $link = $current_post->getLink();
-
                         if (strpos($link, 'facebook') !== false) {
                             echo("<div class=\"fb-post\"data-href=\"".$urlFacebook."\"></div>");
                         } elseif (strpos($link, 'twitter') !== false) {
@@ -64,7 +63,6 @@ if(!isset($_SESSION['userid'])){
                             ));
                             $result = curl_exec($curl);
                             curl_close($curl);
-
                             $result = json_decode($result, true);
                             echo($result['html']); // Displays the embedded tweet
 

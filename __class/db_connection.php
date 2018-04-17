@@ -19,5 +19,5 @@
     //var_dump($dao->getAlbum(1));
     //var_dump($dao->getPost(1));
     //$dao->insertPost('link','description','image','text',5);
-    var_dump($dao->getUserByEmail('40326973@live.napier.ac.uk'));
+    var_dump($dao->insertPost('https://twitter.com/PolaroidFrance/status/984753026048102400','Twitter post','image','Twitter post',2));
 ?>
