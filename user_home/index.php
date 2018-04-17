@@ -54,7 +54,7 @@ if(!isset($_SESSION['userid'])){
                     if(!empty($current_post->getLink())) {
                         $link = $current_post->getLink();
                         if (strpos($link, 'facebook') !== false) {
-                            echo("<div class=\"fb-post\"data-href=\"".$urlFacebook."\"></div>");
+                            echo("<div class=\"fb-post\"data-href=\"".$link."\"></div>");
                         } elseif (strpos($link, 'twitter') !== false) {
                             $curl = curl_init();
                             curl_setopt_array($curl, array(
@@ -67,7 +67,7 @@ if(!isset($_SESSION['userid'])){
                             echo($result['html']); // Displays the embedded tweet
 
                         } elseif (strpos($link, 'instagram') !== false) {
-                            echo("<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"".$urlInstagram."\" data-instgrm-version=\"8\" ></blockquote>");
+                            echo("<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"".$link."\" data-instgrm-version=\"8\" ></blockquote>");
                         } else {
                             echo(" <div>");
                             echo(" <p>" . $current_post->getDescription() . "</p>");
