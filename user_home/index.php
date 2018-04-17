@@ -29,8 +29,13 @@ if(!isset($_SESSION['userid'])){
         <script async defer src="//www.instagram.com/embed.js"></script>
     </head>
     <body>
-    <h1>Welcome on Posted <?php echo($str_usr_name) ?></h1>
-    <section>
+    <div class="container"> <!-- Jack's Code -->
+    <h1>Welcome Back,  <?php echo($str_usr_name) ?></h1>
+        <div class="userButtons">
+            <button class="btn btn-primary btnNewAlbum">New Album</button>
+            <input class="userSearch" type="text" placeholder="Search Albums" name="search" required>
+            <button class="btn btn-primary btnAddPosts">Add Post</button>
+        </div>
         <h1>My albums :</h1>
         <?php
         if (($albums == null) || (empty($albums))) {
@@ -41,16 +46,25 @@ if(!isset($_SESSION['userid'])){
             for ($i = 0; $i < count($albums); ++$i) {
                 $current_album = $albums[$i];
                 $posts = $dao->getPosts($current_album->getId());
-                echo(" <div>");
-                echo(" <h2>" . $current_album->getName() . "</h2>");
-                if ($current_album->getisPublic() == 1) {
-                    echo("<p>Public</p>");
+
+                if($i%2==0){
+                    echo(" <div class='div2albums'>");
+                    echo(" <div class='userGallery cf galleryLeft'>");
                 } else {
-                    echo("<p>Private</p>");
+                    echo(" <div class='userGallery cf galleryRight'>");
                 }
-                echo("<h4> My posts </h4>");
-                for ($i = 0; $i < count($posts); ++$i) {
-                    $current_post = $posts[$i];
+
+                if ($current_album->getisPublic() == 1) {
+                    echo(" <h3>" . $current_album->getName() ."  - Public </h3>");
+                } else {
+                    echo(" <h3>" . $current_album->getName() ." - Private </h3>");
+                }
+                //echo("<h4> My posts </h4>");
+                if(count($posts)==0){
+                    echo ("<div><p>No posts in this album</p></div>");
+                }
+                for ($j = 0; $j < count($posts); ++$j) {
+                    $current_post = $posts[$j];
                     if(!empty($current_post->getLink())) {
                         $link = $current_post->getLink();
                         if (strpos($link, 'facebook') !== false) {
@@ -71,39 +85,39 @@ if(!isset($_SESSION['userid'])){
                         } else {
                             echo(" <div>");
                             echo(" <p>" . $current_post->getDescription() . "</p>");
+                            echo(" <img src='../__website_content/no_image.png'/>");
                             echo("</div>");
                         }
                     }
                     else {
                         echo(" <div>");
                         echo(" <p>" . $current_post->getDescription() . "</p>");
+                        echo(" <img src='../__website_content/no_image.png'/>");
                         echo("</div>");
                     }
                 }
-                echo("</div>");
+
+                echo ("<button class=\"btn btn-primary btnAP\">Add Post</button>
+                            <button class=\"btn btn-primary btnEA\">Edit Album</button><br>");
+
+                echo(" </div>");
+                if($i%2==0){
+                    echo(" </div>");
+                }
 
             }
         }
         ?>
-    </section>
 
-    <div class="container"> <!-- Jack's Code -->
 
-        <h1>Welcome Back, username</h1>
-
-    <div class="userButtons">
-        <button class="btn btn-primary btnNewAlbum">New Album</button>
-        <input class="userSearch" type="text" placeholder="Search Albums" name="search" required>
-        <button class="btn btn-primary btnAddPosts">Add Post</button>
-    </div>
-
+<!--
 
       <div class="userGallery cf galleryLeft">
         <h3>Music Festival</h3>
       <div>
         <img src="../__website_content/lorem.jpg" /> <!-- Not sure whether or not posts will be displayed -->
-      </div>                                            <!-- as images or text but this should fit both -->
-      <div>
+      <!--</div>                                            <!-- as images or text but this should fit both -->
+     <!-- <div>
         <img src="../__website_content/lorem.jpg" />
       </div>
       <div>
@@ -127,8 +141,8 @@ if(!isset($_SESSION['userid'])){
         <h3>Napier</h3>
       <div>
         <img src="../__website_content/lorem.jpg" /> <!-- Not sure whether or not posts will be displayed -->
-      </div>                                            <!-- as images or text but this should fit both -->
-      <div>
+     <!-- </div>                                            <!-- as images or text but this should fit both -->
+      <!--<div>
         <img src="../__website_content/lorem.jpg" />
       </div>
       <div>
@@ -145,7 +159,7 @@ if(!isset($_SESSION['userid'])){
       </div>
       <button class="btn btn-primary btnAP">Add Post</button>
       <button class="btn btn-primary btnEA">Edit Album</button><br>
-    </div>
+    </div>-->
 
     <div class="loadMore">
     <button class="btn btn-primary">Load More</button>

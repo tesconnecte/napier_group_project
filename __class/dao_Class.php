@@ -91,8 +91,8 @@
                                                 and ap.albumid = :id");
             $req->execute(array(':id' => $albumId));
             $result = $req->fetchAll();
+            $posts = array();
             if(!empty($result)){
-                $posts = array();
                 for ($i=0; $i<count($result); $i++){
                     $req2 = $this->db->prepare("select ap.albumid
                     from AlbumPost ap
