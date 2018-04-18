@@ -53,17 +53,17 @@ require_once ("../__class/autoload_Class.php");
 
       <ul class=" dropdown-menu dropdown-menu-right">
         <li>
-          <a href="editProfile.php">
+          <a href="../user_home/editProfile.php">
             Edit Profile
           </a>
         </li>
         <li>
-          <a href="../user_home/edit_profile/editProfile.php">
+          <a href="../user_home/newAlbum.php">
             New Album
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="../user_home/addPost.php">
             Add Post
           </a>
         </li>

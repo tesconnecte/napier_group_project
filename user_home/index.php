@@ -33,9 +33,9 @@ if(!isset($_SESSION['userid'])){
     <h1>Welcome Back,  <?php echo($str_usr_name) ?></h1>
 
         <div class="userButtons">
-            <button class="btn btn-primary btnNewAlbum">New Album</button>
+            <a href="newAlbum.php" class="btn btn-primary btnNewAlbum">New Album</a>
             <input class="userSearch" type="text" placeholder="Search Albums" name="search" required>
-            <button class="btn btn-primary btnAddPosts">Add Post</button>
+            <a href="addPost.php" class="btn btn-primary btnAddPosts">Add Post</a>
         </div>
 
 <h1>My albums :</h1>
@@ -101,8 +101,8 @@ if(!isset($_SESSION['userid'])){
                     }
                 }
 
-                echo ("<button class=\"btn btn-primary btnAP\">Add Post</button>
-                            <button class=\"btn btn-primary btnEA\">Edit Album</button><br>");
+                echo ("<a class=\"btn btn-primary btnAP\">Add Post</a>
+                            <a class=\"btn btn-primary btnEA\">Edit Album</a><br>");
 
                 echo(" </div>");
                 if($i%2==0){

@@ -272,6 +272,7 @@ body {
 
 .btn-US{
   margin-bottom: 20px;
+  margin-right: 0%;
 }
 
 .accountSettings input{
@@ -288,3 +289,33 @@ body {
     color: #C2AEB3;
     float: left;
 }
+
+/*---------------- New Album -----------------*/
+
+.newAlbum {
+  float: left;
+  clear: none;
+  width:100%;
+  text-align:center;
+}
+
+.newAlbum label {
+  float: left;
+  clear: none;
+  display: inline-block;
+  padding: 2px 1em 0 0;
+}
+
+.radioNA{
+  width:50%;
+}
+
+.radioNA label{
+  display:inline-block;
+}
+
+input[type="radio"] {
+    display:inline-block;
+}
+
+/*---------------- New Post -----------------*/
