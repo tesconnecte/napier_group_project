@@ -66,10 +66,12 @@ if(!isset($_SESSION['userid'])){
                 for ($j = 0; $j < count($posts); ++$j) {
                     $current_post = $posts[$j];
                     if(!empty($current_post->getLink())) {
+                        echo(" <div>");
                         $link = $current_post->getLink();
                         if (strpos($link, 'facebook') !== false) {
                             echo("<div class=\"fb-post\"data-href=\"".$link."\"></div>");
                         } elseif (strpos($link, 'twitter') !== false) {
+                            //echo($link);
                             $curl = curl_init();
                             curl_setopt_array($curl, array(
                                 CURLOPT_RETURNTRANSFER => 1,
@@ -83,11 +85,10 @@ if(!isset($_SESSION['userid'])){
                         } elseif (strpos($link, 'instagram') !== false) {
                             echo("<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"".$link."\" data-instgrm-version=\"8\" ></blockquote>");
                         } else {
-                            echo(" <div>");
                             echo(" <p>" . $current_post->getDescription() . "</p>");
                             echo(" <img src='../__website_content/no_image.png'/>");
-                            echo("</div>");
                         }
+                        echo("</div>");
                     }
                     else {
                         echo(" <div>");
