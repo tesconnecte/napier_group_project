@@ -82,3 +82,67 @@
     width: 1170px;
   }
 }
+
+/*-----------------Drop Down-----------------------*/
+
+.navDD {
+    display: block;
+    font: 13px Helvetica, Tahoma, serif;
+}
+
+.navDD li {
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    margin-top: 3px;
+    text-align: center;
+    width: 33.33%;
+}
+
+.navDD .button-dropdown {
+    position: relative;
+    width:  200px;
+}
+
+.navDD li a {
+    display: block;
+    color: #FFF;
+    font-family: 'Roboto';
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.navDD li a span {
+    display: block;
+    margin-left: 5px;
+    font-size: 10px;
+    color: #999;
+}
+
+.navDD li a:hover, .navDD li a.dropdown-toggle.active {
+    color: #DDD;
+}
+
+.navDD li a:hover span, .navDD li a.dropdown-toggle.active span {
+    color: #DDD;
+}
+
+.dropdown-menu{
+  max-height: 500px;
+  background: #2ac7d6; /* Old browsers */
+  background: -moz-linear-gradient(left, #2ac7d6 14%, #29db9a 100%, #7db9e8 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ac7d6', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */  background-color: #DDD;
+}
+
+
+
+.navDD li .dropdown-menu-right.active {
+    display: block;
+}
+
+.navDD li .dropdown-menu-right a {
+    width: 150px;
+}

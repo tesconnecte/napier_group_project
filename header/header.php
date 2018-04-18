@@ -7,6 +7,9 @@ require_once ("../__class/autoload_Class.php");
 
 <!-- navbar -->
 <link rel="stylesheet" href="../header/css/style.css" alt="style" width="50 px" height="50px">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="../header/js/dd.js"></script>
+
 <nav class="navbar">
 
     <div class="container">
@@ -38,9 +41,43 @@ require_once ("../__class/autoload_Class.php");
         ?>
             <li><a href="../user_home/index.php"><h2>Posted</h2></a></li>
         </ul>
-        <ul class="nav nav-right">
-            <li>
-        <img src="../__website_content/logIn.png" height="8%" alt="log in"/><a href="../user_home/index.php"><?php echo ($str_usr_name);?></a>
+
+    <ul class="nav nav-right">
+
+<ul class="navDD nav-right">
+
+    <li class="button-dropdown">
+      <a href="javascript:void(0)" class="dropdown-toggle">
+        <img src="../__website_content/logIn.png" height="50%" alt="log in"/><?php echo ($str_usr_name);?>
+      </a>
+
+      <ul class=" dropdown-menu dropdown-menu-right">
+        <li>
+          <a href="editProfile.php">
+            Edit Profile
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            New Album
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Add Post
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Log Out
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+    </ul>
+  </li>
+
    <?php } ?>
             </li>
         </ul>

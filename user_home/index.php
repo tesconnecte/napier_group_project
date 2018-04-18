@@ -31,12 +31,15 @@ if(!isset($_SESSION['userid'])){
     <body>
     <div class="container"> <!-- Jack's Code -->
     <h1>Welcome Back,  <?php echo($str_usr_name) ?></h1>
+
         <div class="userButtons">
             <button class="btn btn-primary btnNewAlbum">New Album</button>
             <input class="userSearch" type="text" placeholder="Search Albums" name="search" required>
             <button class="btn btn-primary btnAddPosts">Add Post</button>
         </div>
-        <h1>My albums :</h1>
+
+<h1>My albums :</h1>
+
         <?php
         if (($albums == null) || (empty($albums))) {
             echo("<p>You have no albums.</p>");

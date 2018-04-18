@@ -131,7 +131,7 @@ body {
 .userGallery {
   width: 530px;
   margin: 0 auto;
-  padding: 5px;
+  padding: 10px;
   background: #fff;
   box-shadow: 0 1px 2px rgba(0,0,0,.3);
 }
@@ -192,30 +192,61 @@ body {
 
 .btnAP{
   float:left;
+  position:relative;
+  left: 45%;
+  margin-top:40%;
+  background: #2ac7d6; /* Old browsers */
+  background: -moz-linear-gradient(left, #2ac7d6 14%, #29db9a 100%, #7db9e8 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ac7d6', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */
+}
+
+.btn:hover{
+    background-color: #2ac7d6;
+    box-shadow: 0 9px #999;
 }
 
 .btnEA{
-  float:right;
+  float:left;
+  position:relative;
+  right: 25%;
+  margin-top:40%;
+  background: #2ac7d6; /* Old browsers */
+  background: -moz-linear-gradient(left, #2ac7d6 14%, #29db9a 100%, #7db9e8 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ac7d6', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */
 }
 
 .loadMore{
-  position: absolute;
-  width:80%;
-  bottom: 10;
+  position:relative;
+  left: 45%;
+  margin-top:50%;
 }
 
 .userButtons{
-  width: 100%;
+  width: 90%;
   padding-top: 20px;
   height: 15%;
 }
 
 .btnNewAlbum{
   float: right;
+  background: #2ac7d6; /* Old browsers */
+  background: -moz-linear-gradient(left, #2ac7d6 14%, #29db9a 100%, #7db9e8 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ac7d6', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */
 }
 
 .btnAddPosts{
-  float: center;
+  margin-left: 30%;
+  background: #2ac7d6; /* Old browsers */
+  background: -moz-linear-gradient(left, #2ac7d6 14%, #29db9a 100%, #7db9e8 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ac7d6', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */
 }
 
 .userSearch{
