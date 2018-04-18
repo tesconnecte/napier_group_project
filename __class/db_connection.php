@@ -20,7 +20,7 @@
     //var_dump($dao->getPost(1));
     //$dao->insertPost('link','description','image','text',5);
     //var_dump($dao->insertPost('https://twitter.com/PolaroidFrance/status/984753026048102400','Twitter post','image','Twitter post',2));
-    var_dump($dao->insertPost('https://www.facebook.com/uniladmag/videos/4733917056631316/','Facebook post','image','Facebook post',2));
+    //var_dump($dao->insertPost('https://www.facebook.com/uniladmag/videos/4733917056631316/','Facebook post','image','Facebook post',2));
     //var_dump($dao->insertPost('https://www.instagram.com/p/BhZRfRnFl0V/','Instagram post','image','Instagram post',2));
 
 ?>

@@ -11,6 +11,7 @@ INSERT INTO ALBUM (name,isPublic) VALUES ('New York Trip',false);
 INSERT INTO ALBUM (name,isPublic) VALUES ('Paris Trip',false);
 INSERT INTO ALBUM (name,isPublic) VALUES ('20th Birthday',false);
 INSERT INTO ALBUM (name,isPublic) VALUES ('Memes -_-',false);
+INSERT INTO ALBUM (name,isPublic) VALUES ('Posts',false);
 
 INSERT INTO USERALBUMS  VALUES (1,1);
 INSERT INTO USERALBUMS  VALUES (2,2);
@@ -18,6 +19,13 @@ INSERT INTO USERALBUMS  VALUES (3,3);
 INSERT INTO USERALBUMS  VALUES (4,4);
 INSERT INTO USERALBUMS  VALUES (5,5);
 INSERT INTO USERALBUMS  VALUES (6,6);
+INSERT INTO USERALBUMS  VALUES (1,7);
+INSERT INTO USERALBUMS  VALUES (2,7);
+INSERT INTO USERALBUMS  VALUES (3,7);
+INSERT INTO USERALBUMS  VALUES (4,7);
+INSERT INTO USERALBUMS  VALUES (5,7);
+INSERT INTO USERALBUMS  VALUES (6,7);
+
 
 INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('Local','Cold Play','ColdPlay show at Musilac !','/user_data/1/img1.jpg');
 INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('Local','Indochine','Indochine show at Musilac !','/user_data/1/img2.jpg');
@@ -43,6 +51,10 @@ INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('Local','Meme 1'
 INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('Local','Meme 2','Laughed so hard','/user_data/6/img2.jpg');
 INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('Local','Meme 3','I cant forget this one','/user_data/3/img3.jpg');
 
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('https://www.instagram.com/p/BhZRfRnFl0V/','Instagram post','Instagram post','image');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('https://www.facebook.com/uniladmag/videos/4733917056631316/','Facebook post','Facebook post','image');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('https://twitter.com/PolaroidFrance/status/984753026048102400','Twitter post','Twitter post','image');
+
 INSERT INTO ALBUMPOST VALUES (1,1);
 INSERT INTO ALBUMPOST VALUES (1,2);
 INSERT INTO ALBUMPOST VALUES (1,3);
@@ -61,3 +73,6 @@ INSERT INTO ALBUMPOST VALUES (5,15);
 INSERT INTO ALBUMPOST VALUES (6,16);
 INSERT INTO ALBUMPOST VALUES (6,17);
 INSERT INTO ALBUMPOST VALUES (6,18);
+INSERT INTO ALBUMPOST VALUES (7,19);
+INSERT INTO ALBUMPOST VALUES (7,20);
+INSERT INTO ALBUMPOST VALUES (7,21);
