@@ -12,7 +12,7 @@ if(!isset($_SESSION['userid'])){
     header('Location: ../home/logIn.php?error=2');
 } else {
     include("../header/htmlhead.php");
-    echo('<link rel="stylesheet" href="../user_home/css/style.css" alt="style" width="50 px" height="50px">');
+    echo('<link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">');
 
     include("../header/header.php");
     $dao = new DAO();
@@ -31,12 +31,26 @@ if(!isset($_SESSION['userid'])){
     <body>
 
 <div class="container">
-      <h1>Edit Profile</h1><br>
+      <h1>Change Password</h1><br>
 
       <div class="userSettings">
-      <a href="accountDetails.php" class="btn btn-primary btn-US">Account Details</a><br>
+      <form class="accountSettings" method="post"  action="">
 
-      <a href="changePassword.php" class="btn btn-primary btn-US">Password Settings</a>
+          <label for="psw">Current Password:</label>
+          <input type="password" placeholder="Enter current password..." name="psw" required>
+
+          <label for="npsw">New Password:</label>
+          <input type="password" placeholder="Enter new password..." name="npsw" required>
+
+          <label for="cnpsw">Confirm New Password:</label>
+          <input type="password" placeholder="Enter new password again..." name="cnpsw" required>
+
+          <br>
+
+          <button class="btn btn-primary btn-US">Save Changes</button><br>
+
+
+      </form>
     </div>
 </div><!--container-->
 

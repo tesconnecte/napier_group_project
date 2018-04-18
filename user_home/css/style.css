@@ -190,11 +190,8 @@ body {
 
 /*---------------- user page buttons -----------------*/
 
-.btnAP{
-  float:left;
-  position:relative;
-  left: 45%;
-  margin-top:40%;
+.btn{
+  padding-top: 10px;
   background: #2ac7d6; /* Old browsers */
   background: -moz-linear-gradient(left, #2ac7d6 14%, #29db9a 100%, #7db9e8 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(left, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
@@ -207,16 +204,19 @@ body {
     box-shadow: 0 9px #999;
 }
 
+.btnAP{
+  float:left;
+  position:relative;
+  left: 45%;
+  margin-top:40%;
+}
+
+
 .btnEA{
   float:left;
   position:relative;
   right: 25%;
   margin-top:40%;
-  background: #2ac7d6; /* Old browsers */
-  background: -moz-linear-gradient(left, #2ac7d6 14%, #29db9a 100%, #7db9e8 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ac7d6', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */
 }
 
 .loadMore{
@@ -233,20 +233,10 @@ body {
 
 .btnNewAlbum{
   float: right;
-  background: #2ac7d6; /* Old browsers */
-  background: -moz-linear-gradient(left, #2ac7d6 14%, #29db9a 100%, #7db9e8 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ac7d6', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */
 }
 
 .btnAddPosts{
   margin-left: 30%;
-  background: #2ac7d6; /* Old browsers */
-  background: -moz-linear-gradient(left, #2ac7d6 14%, #29db9a 100%, #7db9e8 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right, #2ac7d6 14%,#29db9a 100%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ac7d6', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */
 }
 
 .userSearch{
@@ -272,4 +262,29 @@ body {
   -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
   -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
   transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+/*---------------- User Settings -----------------*/
+
+.userSettings{
+  text-align:center;
+}
+
+.btn-US{
+  margin-bottom: 20px;
+}
+
+.accountSettings input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.accountSettings label{
+    font-family: "Roboto";
+    color: #C2AEB3;
+    float: left;
 }

@@ -58,7 +58,7 @@ require_once ("../__class/autoload_Class.php");
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="../user_home/edit_profile/editProfile.php">
             New Album
           </a>
         </li>
