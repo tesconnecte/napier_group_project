@@ -48,7 +48,7 @@ require_once ("../__class/autoload_Class.php");
 
     <li class="button-dropdown">
       <a href="javascript:void(0)" class="dropdown-toggle">
-        <img src="../__website_content/logIn.png" height="50%" alt="log in"/><?php echo ($str_usr_name);?>
+        <img src="../__website_content/logIn.png" height="30px" alt="log in"/><?php echo ($str_usr_name);?>
       </a>
 
       <ul class=" dropdown-menu dropdown-menu-right">
