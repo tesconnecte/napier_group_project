@@ -221,6 +221,16 @@
             $req->execute(array(':id' => $id, ':text' => $text));
         }
 
+        function updateUser($userid, $firstName, $surname,  $email,  $birthDate){
+                $req = $this->db->prepare("update user set firstname=:fn, surname=:sn, email=:em, birthdate=STR_TO_DATE(:bd,'%d-%m-%Y') where id=:uid");
+                $req->execute(array(':fn' => $firstName,':sn' => $surname,':em' => $email, ':bd' => $birthDate, ':uid' => $userid));
+        }
+
+        function updateUserPassword($userid, $password){
+            $req = $this->db->prepare("update user set password=:ps where id=:uid");
+            $req->execute(array(':ps' => $password, ':uid' => $userid));
+        }
+
         function connection($email,$password)
         {
             $req = $this->db->prepare("select id, firstname, surname, email, birthdate from user where user.email = :e and user.password = :p");

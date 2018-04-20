@@ -13,21 +13,17 @@ if(!isset($_SESSION['userid'])){
 } else {
     include("../header/htmlhead.php");
     echo('<link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">');
+    echo('<link href="../__scripts/jquery-ui.css" rel="stylesheet">');
+    echo('<link href="../__scripts/theme.css" rel="stylesheet">');
+    echo('<script src="../__scripts/jquery-ui.js"></script>');
+    echo('<script src="../user_home/js/accountDetails.js"></script>');
 
     include("../header/header.php");
     $dao = new DAO();
 
     $user = $dao->getUser($_SESSION['userid']);
-    $str_usr_name = $user->getFirstName() . " " . $user->getSurname();
-
-    $albums = $dao->getAlbums($_SESSION['userid']);
+    $birthdateFormat = date("d-m-Y", strtotime($user->getBirthDate()));
     ?>
-    <html>
-    <head>
-        <link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">
-        <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5"async></script>
-        <script async defer src="//www.instagram.com/embed.js"></script>
-    </head>
     <body>
 
 <div class="container">
@@ -35,22 +31,19 @@ if(!isset($_SESSION['userid'])){
       <h3>Edit fields to be changed</h3><br>
 
       <div class="userSettings">
-      <form class="accountSettings" method="post"  action="">
+      <form class="accountSettings" method="post"  action="../__treatment/update_account_details.php">
 
           <label for="fname">First Name:</label>
-          <input type="text" placeholder="Enter first name..." name="fname" required>
+          <input type="text" placeholder="Enter first name..." name="fname" value="<?php echo($user->getFirstName())?>" required>
 
           <label for="sname">Surname:</label>
-          <input type="text" placeholder="Enter surname..." name="sname" required>
+          <input type="text" placeholder="Enter surname..." name="sname" value="<?php echo($user->getSurname())?>"required>
 
           <label for="email">Email:</label>
-          <input type="email" placeholder="Enter email address..." name="email" required>
+          <input type="email" placeholder="Enter email address..." name="email" value="<?php echo($user->getEmail())?>" required>
 
           <label for="bdate">Date of Birth:</label>
-          <input type="date" placeholder="Enter date of birth..." name="bdate" required>
-
-          <label for="uname">Username:</label>
-          <input type="text" placeholder="Enter username..." name="uname" required><br>
+          <input type="text" placeholder="Click to enter your birth date" name="bdate" id="bdate" value="<?php echo($birthdateFormat)?>"><br>
 
           <button class="btn btn-primary btn-US">Save Changes</button><br>
 

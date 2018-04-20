@@ -7,7 +7,6 @@ require_once ("../__class/autoload_Class.php");
 
 <!-- navbar -->
 <link rel="stylesheet" href="../header/css/style.css" alt="style" width="50 px" height="50px">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="../header/js/dd.js"></script>
 
 <nav class="navbar">

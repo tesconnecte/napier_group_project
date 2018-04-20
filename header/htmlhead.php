@@ -12,4 +12,7 @@
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,latin-ext">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower">
+
+    <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5"async></script>
+    <script async defer src="//www.instagram.com/embed.js"></script>
 </head>

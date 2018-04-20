@@ -8,7 +8,7 @@
 try {
     session_start();
     if (isset($_SESSION['userid'])) {
-        unset($_SESSION['name']);
+        unset($_SESSION['userid']);
         session_destroy();
         header('Location: ../home/index.php');
 

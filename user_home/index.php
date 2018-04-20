@@ -22,12 +22,6 @@ if(!isset($_SESSION['userid'])){
 
     $albums = $dao->getAlbums($_SESSION['userid']);
     ?>
-    <html>
-    <head>
-        <link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">
-        <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5"async></script>
-        <script async defer src="//www.instagram.com/embed.js"></script>
-    </head>
     <body>
     <div class="container"> <!-- Jack's Code -->
     <h1>Welcome Back,  <?php echo($str_usr_name) ?></h1>
@@ -101,70 +95,19 @@ if(!isset($_SESSION['userid'])){
                     }
                 }
 
-                echo ("<a href=\"../user_home/albumView.php\" class=\"btn btn-primary btnVA\">View Album</a>
-                        <a href=\"../user_home/addPost.php\" class=\"btn btn-primary btnAP\">Add Post</a>
-                            <a href=\"../user_home/editAlbum.php\" class=\"btn btn-primary btnEA\">Edit Album</a><br><br>");
+                echo ("<a href=\"../user_home/albumView.php?id=".$current_album->getId()."\" class=\"btn btn-primary btnVA\">View Album</a>
+                        <a href=\"../user_home/addPost.php?albumid=".$current_album->getId()."\" class=\"btn btn-primary btnAP\">Add Post</a>
+                            <a href=\"../user_home/editAlbum.php?id=".$current_album->getId()."\" class=\"btn btn-primary btnEA\">Edit Album</a><br><br>");
 
                 echo(" </div>");
-                if($i%2==0){
+                if($i%2==1){
+                    echo(" </div>");
+                }elseif (($i+1)==count($albums)){
                     echo(" </div>");
                 }
-
             }
         }
         ?>
-
-
-<!--
-
-      <div class="userGallery cf galleryLeft">
-        <h3>Music Festival</h3>
-      <div>
-        <img src="../__website_content/lorem.jpg" /> <!-- Not sure whether or not posts will be displayed -->
-      <!--</div>                                            <!-- as images or text but this should fit both -->
-     <!-- <div>
-        <img src="../__website_content/lorem.jpg" />
-      </div>
-      <div>
-        <img src="../__website_content/lorem.jpg" />
-      </div>
-      <div>
-        <img src="../__website_content/lorem.jpg" />
-      </div>
-      <div>
-        <img src="../__website_content/lorem.jpg" />
-      </div>
-      <div>
-        <img src="../__website_content/lorem.jpg" />
-      </div>
-      <button class="btn btn-primary btnAP">Add Post</button>
-      <button class="btn btn-primary btnEA">Edit Album</button><br>
-    </div>
-
-
-      <div class="userGallery cf galleryRight">
-        <h3>Napier</h3>
-      <div>
-        <img src="../__website_content/lorem.jpg" /> <!-- Not sure whether or not posts will be displayed -->
-     <!-- </div>                                            <!-- as images or text but this should fit both -->
-      <!--<div>
-        <img src="../__website_content/lorem.jpg" />
-      </div>
-      <div>
-        <img src="../__website_content/lorem.jpg" />
-      </div>
-      <div>
-        <img src="../__website_content/lorem.jpg" />
-      </div>
-      <div>
-        <img src="../__website_content/lorem.jpg" />
-      </div>
-      <div>
-        <img src="../__website_content/lorem.jpg" />
-      </div>
-      <button class="btn btn-primary btnAP">Add Post</button>
-      <button class="btn btn-primary btnEA">Edit Album</button><br>
-    </div>-->
 
     <div class="loadMore">
     <button class="btn btn-primary">Load More</button>

@@ -15,15 +15,9 @@ if(!isset($_SESSION['userid'])){
     echo('<link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">');
 
     include("../header/header.php");
-    $dao = new DAO();
-
-    $user = $dao->getUser($_SESSION['userid']);
-    $str_usr_name = $user->getFirstName() . " " . $user->getSurname();
-
-    $albums = $dao->getAlbums($_SESSION['userid']);
     ?>
     <html>
-    <head>
+        <head>
         <link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">
         <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5"async></script>
         <script async defer src="//www.instagram.com/embed.js"></script>
@@ -34,7 +28,7 @@ if(!isset($_SESSION['userid'])){
       <h1>Create a New Album</h1><br>
 
       <div class="newAlbum">
-      <form class="accountSettings" method="post"  action="">
+      <form class="accountSettings" method="post"  action="../__treatment/new_album.php">
 
           <label for="title">Title:</label>
           <input type="text" placeholder="Give your album a title..." name="title" required><br>

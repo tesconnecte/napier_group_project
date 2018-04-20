@@ -15,26 +15,14 @@ if(!isset($_SESSION['userid'])){
     echo('<link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">');
 
     include("../header/header.php");
-    $dao = new DAO();
-
-    $user = $dao->getUser($_SESSION['userid']);
-    $str_usr_name = $user->getFirstName() . " " . $user->getSurname();
-
-    $albums = $dao->getAlbums($_SESSION['userid']);
     ?>
-    <html>
-    <head>
-        <link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">
-        <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5"async></script>
-        <script async defer src="//www.instagram.com/embed.js"></script>
-    </head>
     <body>
 
 <div class="container">
       <h1>Change Password</h1><br>
 
       <div class="userSettings">
-      <form class="accountSettings" method="post"  action="">
+      <form class="accountSettings" method="post"  action="../__treatment/edit_account_password.php">
 
           <label for="psw">Current Password:</label>
           <input type="password" placeholder="Enter current password..." name="psw" required>
