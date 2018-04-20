@@ -68,7 +68,7 @@ require_once ("../__class/autoload_Class.php");
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="../__treatment/logout.php">
             Log Out
           </a>
         </li>
