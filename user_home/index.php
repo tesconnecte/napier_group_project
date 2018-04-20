@@ -101,8 +101,9 @@ if(!isset($_SESSION['userid'])){
                     }
                 }
 
-                echo ("<a class=\"btn btn-primary btnAP\">Add Post</a>
-                            <a class=\"btn btn-primary btnEA\">Edit Album</a><br>");
+                echo ("<a href=\"../user_home/albumView.php\" class=\"btn btn-primary btnVA\">View Album</a>
+                        <a href=\"../user_home/addPost.php\" class=\"btn btn-primary btnAP\">Add Post</a>
+                            <a href=\"../user_home/editAlbum.php\" class=\"btn btn-primary btnEA\">Edit Album</a><br><br>");
 
                 echo(" </div>");
                 if($i%2==0){

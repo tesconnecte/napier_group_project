@@ -27,45 +27,89 @@ if(!isset($_SESSION['userid'])){
         <link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">
         <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5"async></script>
         <script async defer src="//www.instagram.com/embed.js"></script>
-        <script type="text/javascript" src="../user_home/js/carousel.js"> </script>
     </head>
     <body>
 
 <div class="container">
       <h1>Music Festival</h1><br>
 
-      <div class="radio">
+      <div id="gallery row clearfix">
 
-        <input id="r1" type="radio" name="bullet" checked="checked">
-        <span>
-          <label for="r1"></label>
-          <img src="../__website_content/lorem.jpg"/>
-        </span>
+        <div class="userButtons">
+            <a href="editAlbum.php" class="btn btn-primary btnNewAlbum">Edit Album</a>
+            <input class="userSearch" type="text" placeholder="Search Albums" name="search" required>
+            <a href="addPost.php" class="btn btn-primary btnAddPosts">Add Post</a>
+        </div>
 
-        <input id="r2" type="radio" name="bullet">
-        <span>
-          <label for="r2"></label>
-          <img src="../__website_content/lorem.jpg"/>
-        </span>
+<!--     Main album gallery    -->
 
-        <input id="r3" type="radio" name="bullet">
-        <span>
-          <label for="r3"></label>
-          <img src="../__website_content/lorem.jpg"/>
-        </span>
+<h3>Click to edit posts</h3>
 
-        <input id="r4" type="radio" name="bullet">
-        <span>
-          <label for="r4"></label>
-          <img src="../__website_content/lorem.jpg"/>
-        </span>
+  <div class="gallery-item">
+    <a href="../user_home/editPost.php">
+      <img src="../__website_content/lorem.jpg" alt="gallery image one" title="Gallery Image One"/>
+    </a></div>
+  <div class="gallery-item">
+    <a href="../user_home/editPost.php">
+      <img src="../__website_content/lorem.jpg" alt="gallery image two" />
+    </a></div>
+  <div class="gallery-item">
+    <a href="../user_home/editPost.php">
+      <img src="../__website_content/lorem.jpg" alt="gallery image three" />
+    </a></div>
+  <div class="gallery-item">
+    <a href="../user_home/editPost.php">
+      <img src="../__website_content/lorem.jpg" alt="gallery image four" />
+    </a></div>
+  <div class="gallery-item">
+    <a href="../user_home/editPost.php">
+      <img src="../__website_content/lorem.jpg" alt="gallery image five" />
+    </a></div>
+  <div class="gallery-item">
+    <a href="../user_home/editPost.php">
+      <img src="../__website_content/lorem.jpg" alt="gallery image six" />
+    </a></div>
+  <div class="gallery-item">
+    <a href="../user_home/editPost.php">
+      <img src="../__website_content/lorem.jpg" alt="gallery image seven" />
+    </a></div>
+  <div class="gallery-item">
+    <a href="../user_home/editPost.php">
+      <img src="../__website_content/lorem.jpg" alt="gallery image eight" />
+    </a></div>
+  <div class="gallery-item">
+    <a href="../user_home/editPost.php">
+      <img src="../__website_content/lorem.jpg" alt="gallery image nine" />
+    </a></div>
+  <div class="gallery-item">
+    <a href="../user_home/editPost.php">
+      <img src="../__website_content/lorem.jpg" alt="gallery image ten" />
+    </a></div>
+  <div class="gallery-item">
+    <a href="../user_home/editPost.php">
+      <img src="../__website_content/lorem.jpg" alt="gallery image eleven" />
+    </a></div>
+  <div class="gallery-item">
+    <a href="../user_home/editPost.php">
+      <img src="../__website_content/lorem.jpg" alt="gallery image twelve" />
+    </a></div>
+  <div class="gallery-item">
+    <a href="../user_home/editPost.php">
+      <img src="../__website_content/lorem.jpg" alt="gallery image thirteen" />
+    </a></div>
+  <div class="gallery-item">
+    <a href="../user_home/editPost.php">
+      <img src="../__website_content/lorem.jpg" alt="gallery image fourteen" />
+    </a></div>
+  <div class="gallery-item">
+    <a href="../user_home/editPost.php">
+      <img src="../__website_content/lorem.jpg" alt="gallery image fifteen" />
+    </a></div>
+</div><!--gllery -->
 
-        <input id="r5" type="radio" name="bullet">
-        <span>
-          <label for="r5"></label>
-          <img src="../__website_content/lorem.jpg"/>
-        </span>
-      </div>
+<div class="loadMore">
+<button class="btn btn-primary">Load More</button>
+</div>
 
 </div><!--container-->
 

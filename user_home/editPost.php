@@ -72,7 +72,8 @@ if(!isset($_SESSION['userid'])){
           <input type="text" placeholder="URL of Post..." name="chooseFile" required><br>
 
 
-          <button class="btn btn-primary">Save Changes</button><br>
+          <button class="btn btn-primary">Save Changes</button>
+          <button class="btn btn-primary">Delete Post</button><br>
 
 
       </form>
