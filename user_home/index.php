@@ -66,21 +66,21 @@ if(!isset($_SESSION['userid'])){
                         echo(" <div>");
                         $link = $current_post->getLink();
                         if (strpos($link, 'facebook') !== false) {
-                            echo("<div class=\"fb-post\"data-href=\"".$link."\"></div>");
+                            echo("<div class=\"fb-post gallery-item\"data-href=\"".$link."\"></div>");
                         } elseif (strpos($link, 'twitter') !== false) {
-                            //echo($link);
                             $curl = curl_init();
                             curl_setopt_array($curl, array(
                                 CURLOPT_RETURNTRANSFER => 1,
                                 CURLOPT_URL => 'https://publish.twitter.com/oembed?url='.$link
                             ));
                             $result = curl_exec($curl);
+                            var_dump($result);
                             curl_close($curl);
                             $result = json_decode($result, true);
                             echo($result['html']); // Displays the embedded tweet
 
                         } elseif (strpos($link, 'instagram') !== false) {
-                            echo("<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"".$link."\" data-instgrm-version=\"8\" ></blockquote>");
+                            echo("<blockquote class=\"instagram-media gallery-item\" data-instgrm-captioned data-instgrm-permalink=\"".$link."\" data-instgrm-version=\"8\" ></blockquote>");
                         } else {
                             echo(" <p>" . $current_post->getDescription() . "</p>");
                             echo(" <img src='../__website_content/no_image.png'/>");
