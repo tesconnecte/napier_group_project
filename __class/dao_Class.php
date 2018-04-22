@@ -88,8 +88,41 @@
             $req = $this->db->prepare("select p.* 
                                                 from Personnalpost p, albumpost ap
                                                 where p.id = ap.postid
-                                                and ap.albumid = :id");
+                                                and ap.albumid = :id
+                                                ORDER BY  p.id");
             $req->execute(array(':id' => $albumId));
+            $result = $req->fetchAll();
+            $posts = array();
+            if(!empty($result)){
+                for ($i=0; $i<count($result); $i++){
+                    $req2 = $this->db->prepare("select ap.albumid
+                    from AlbumPost ap
+                    where ap.postid = :id ");
+                    $req2->execute(array(':id' => $result[$i]['id']));
+                    $result2 = $req2->fetchAll();
+                    //var_dump($result2[0]['albumid']);
+                    if(!empty($result2)) {
+                        $post = new Personalpost($result[$i]['id'], $result[$i]['link'], $result2[0]['albumid'], $result[$i]['description'], $result[$i]['image'], $result[$i]['text']);
+                        $posts[$i] = $post;
+                    }
+                }
+            }
+            return $posts;
+        }
+
+        function getPostsFromRange($albumId,$lastid,$nbposts)
+        {
+            $req = $this->db->prepare("select p.* 
+                                                from Personnalpost p, albumpost ap
+                                                where p.id = ap.postid
+                                                and ap.albumid = :id
+                                                and p.id> :lid
+                                                ORDER BY  p.id 
+                                                LIMIT :nbp");
+            $req->bindValue(':id',$albumId,PDO::PARAM_INT);
+            $req->bindValue(':lid',$lastid,PDO::PARAM_INT);
+            $req->bindValue(':nbp',$nbposts,PDO::PARAM_INT);
+            $req->execute();
             $result = $req->fetchAll();
             $posts = array();
             if(!empty($result)){

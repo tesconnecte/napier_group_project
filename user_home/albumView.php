@@ -29,12 +29,21 @@ if(!isset($_GET['id'])){
         }
         $album = $dao->getAlbum($_GET['id']);
         $posts = $dao->getPosts($_GET['id']);
+        $nbPostsToDisplay=9;
+        $lastpid = 0;
+        $lastAlbumPostID=0;
+        if(count($posts)>0){
+            $postToTreat = $posts[(count($posts)-1)];
+            $lastAlbumPostID = $postToTreat->getId();
+        }
+
     } catch (Exception $e) {
         header('Location: ../user_home/errorActionUser.php?errType=database&errID=1');
     }
 
     include("../header/htmlhead.php");
     echo('<link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">');
+    echo('<script type="text/javascript" src="../user_home/js/loadMorePost.js"></script>');
     include("../header/header.php");
     ?>
     <body>
@@ -45,7 +54,7 @@ if(!isset($_GET['id'])){
         <div id="gallery row clearfix">
 
             <div class="userButtons">
-                <a href="editAlbum.php" class="btn btn-primary btnNewAlbum">Edit Album</a>
+                <a href="editAlbum.php?<?php echo("id=".$album->getId()) ?>" class="btn btn-primary btnNewAlbum">Edit Album</a>
                 <input class="userSearch" type="text" placeholder="Search Posts" name="search" required>
                 <a href="addPost.php" class="btn btn-primary btnAddPosts">Add Post</a>
             </div>
@@ -53,50 +62,43 @@ if(!isset($_GET['id'])){
             <!--     Main album gallery    -->
 
             <h3>Click to edit posts</h3>
+            <div id="albumposts">
             <?php
+
 
                 //COMPLETE HERE
                 if (count($posts) == 0) {
                     echo("<div><p>No posts in this album</p></div>");
                 }
                 else {
-                    for ($j = 0; $j < count($posts); ++$j) {
-                        $current_post = $posts[$j];
-                        if (!empty($current_post->getLink())) {
-                            echo("<a href=\"../user_home/editPost.php?id=".$current_post->getId()."\">");
-                            echo(" <div class=\"gallery-item\">");
-                            $link = $current_post->getLink();
-                            if (strpos($link, 'facebook') !== false) {
-                                echo("<div class=\"fb-post\"data-href=\"" . $link . "\"></div>");
-                            } elseif (strpos($link, 'twitter') !== false) {
-                                //echo($link);
-                                $curl = curl_init();
-                                curl_setopt_array($curl, array(
-                                    CURLOPT_RETURNTRANSFER => 1,
-                                    CURLOPT_URL => 'https://publish.twitter.com/oembed?url=' . $link
-                                ));
-                                $result = curl_exec($curl);
-                                curl_close($curl);
-                                $result = json_decode($result, true);
-                                echo($result['html']); // Displays the embedded tweet
-
-                            } elseif (strpos($link, 'instagram') !== false) {
-                                echo("<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"" . $link . "\" data-instgrm-version=\"8\" ></blockquote>");
+                    for ($j = 0; $j < $nbPostsToDisplay; ++$j) {
+                        if ($j < count($posts)) {
+                            $current_post = $posts[$j];
+                            $lastpid = $current_post->getId();
+                            if (!empty($current_post->getLink())) {
+                                $link = $current_post->getLink();
+                                if (strpos($link, 'facebook') !== false) {
+                                    echo("<div class=\"fb-post gallery-item\"data-href=\"" . $link . "\" data-width=\"350\" data-height=\"350\"></div>");
+                                } elseif (strpos($link, 'twitter') !== false) {
+                                    $curl = curl_init();
+                                    curl_setopt_array($curl, array(
+                                        CURLOPT_RETURNTRANSFER => 1,
+                                        CURLOPT_URL => 'https://publish.twitter.com/oembed?url=' . $link . '&maxwidth=350&maxheight=350'
+                                    ));
+                                    $result = curl_exec($curl);
+                                    curl_close($curl);
+                                    $result = json_decode($result, true);
+                                    echo("<div class='gallery-item'>" . $result['html'] . "</div>"); // Displays the embedded tweet
+                                } elseif (strpos($link, 'instagram') !== false) {
+                                    echo("<div class='gallery-item'><blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"" . $link . "\" data-instgrm-version=\"8\"  MAXWIDTH='350' MAXHEIGHT='350'></blockquote></div>");
+                                } else {
+                                    echo(" <div class='gallery-item'><h3>" . $current_post->getText() . "</h3>");
+                                    echo(" <img src='../__website_content/no_image.png'/></div>");
+                                }
                             } else {
-                                echo(" <p>" . $current_post->getDescription() . "</p>");
-                                echo(" <img src='../__website_content/no_image.png'/>");
+                                echo(" <div class='gallery-item'><h3>" . $current_post->getText . "</h3>");
+                                echo(" <img src='../__website_content/no_image.png'/></div>");
                             }
-                            echo("</div></a>");
-                        } else {
-                            echo("<a href=\"../user_home/editPost.php?id=".$current_post->getId()."\">");
-                            echo(" <div class=\"gallery-item\">");
-                            echo(" <p>" . $current_post->getDescription() . "</p>");
-                            if ($current_post->getImage() != null) {
-                                echo(" <img src='../'" . $current_post->getImage() . "/>");
-                            } else {
-                                echo(" <img src='../__website_content/no_image.png'/>");
-                            }
-                            echo(" </div></a>");
                         }
                     }
                 }
@@ -104,12 +106,14 @@ if(!isset($_GET['id'])){
 
 
             ?>
-
+            </div>
         </div><!--gllery -->
-
-        <div class="loadMore">
-            <button class="btn btn-primary">Load More</button>
-        </div>
+        <?php
+        if(count($posts)>=$nbPostsToDisplay){?>
+            <div class="loadMore">
+                <?php echo("<button id='loadMorePosts' class='btn btn-primary' data-albumid='".$album->getId()."' data-lastpid='".$lastpid."' data-nbposts='".$nbPostsToDisplay."' data-ultimatepid='".$lastAlbumPostID."'>Load More</button>"); ?>
+            </div>
+        <?php } ?>
 
     </div><!--container-->
 

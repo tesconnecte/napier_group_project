@@ -1,0 +1,4 @@
+cURL might not work in /user_home/index.php and /user_home/albumView.php. You need to download the last certificate version of cURL (cacert.pem file): Download it here  from https://curl.haxx.se/docs/caextract.html
+Place it in your php installation folder "/php/"
+In this folder open the php.ini file, Uncomment ";curl.cainfo" (Result:"curl.cainfo")
+In file, set the path: "curl.cainfo=c:\<<Path>>\php\cacert.pem"

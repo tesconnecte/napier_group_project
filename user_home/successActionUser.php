@@ -26,7 +26,7 @@ if(!isset($_SESSION['userid'])){
         }else if($_GET['action']=='4'){
             echo ("<h3>Password successfully changed</h3>");
         }else if($_GET['action']=='5'){
-            echo ("<h3>Add new action completed</h3>");
+            echo ("<h3>Album deleted</h3>");
         }else if($_GET['action']=='6'){
             echo ("<h3>Add new action completed</h3>");
         }else{
