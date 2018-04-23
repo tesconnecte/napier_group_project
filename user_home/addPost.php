@@ -13,7 +13,6 @@ if(!isset($_SESSION['userid'])){
 } else {
     include("../header/htmlhead.php");
     echo('<link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">');
-
     include("../header/header.php");
     $dao = new DAO();
 
@@ -22,55 +21,44 @@ if(!isset($_SESSION['userid'])){
 
     $albums = $dao->getAlbums($_SESSION['userid']);
     ?>
-    <html>
-    <head>
-        <link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">
-        <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5"async></script>
-        <script async defer src="//www.instagram.com/embed.js"></script>
-    </head>
+    <script type="text/javascript" src="../user_home/js/addpost.js"></script>
     <body>
 
 <div class="container">
       <h1>Add Post</h1><br>
-
       <div class="addPost">
       <form class="accountSettings" method="post"  action="">
 
         <div class="form-group">
           <label for="sel1">Select Album:</label>
           <select class="form-control ddPost">
-            <option>Music Festival</option>
-            <option>Party</option>
-            <option>Holiday</option>
-            <option>Birthday</option>
+            <?php
+            foreach ($albums as $key => $currentAlbum) {
+              echo '<option value="'.$currentAlbum->getId().'">'.$currentAlbum->getName().'</option>';
+            }
+            ?>
         </select>
         <br>
-
-          <label for="title">Title:</label>
-          <input type="text" placeholder="Give your post a title..." name="title" required><br>
 
           <div class="radioNA">
           <label for="postType">Post Type:</label>
 
-          <input type="radio" class="postType" name="postType" value="public" checked>Local</input>
+          <input type="radio" class="postType" name="postType" value="existing" checked>Existing</input>
 
-          <input type="radio" class="postType" name="postType" value="private">Facebook</input>
-
-          <input type="radio" class="postType" name="postType" value="private">Twitter</input>
-
-          <input type="radio" class="postType" name="postType" value="private">Instagram</input>
+          <input type="radio" class="postType" name="postType" value="local">Local</input>
           </div>
           <br>
+          <div id="local_div">
+            <label for="description">Description:</label>
+            <input type="text" id="desc_field" placeholder="Give your post a description..." name="description"><br>
 
-          <label for="description">Description:</label>
-          <input type="text" placeholder="Give your post a description..." name="description" required><br>
+            <label for="chooseFile">Choose file or photo:</label>
+            <input type="file" id="photo_field" placeholder="Choose a file or photo to upload..." name="chooseFile"><br>
+          </div>
 
-          <label for="chooseFile">Choose file or photo:</label>
-          <input type="file" placeholder="Choose a file or photo to upload..." name="chooseFile" required><br>
-          <input type="text" placeholder="URL of Post..." name="chooseFile" required><br>
-
-
+          <input type="text" id="url_field" placeholder="URL of Post..." name="chooseFile"><br>
           <button class="btn btn-primary">Add Post</button><br>
+          <div id="preview"></div>
 
 
       </form>
