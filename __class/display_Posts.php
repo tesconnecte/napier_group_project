@@ -1,6 +1,6 @@
 <?php
 
-require_once('C:\xampp\htdocs\napier_group_project\__class\twitter-api-php-master\TwitterAPIExchange.php');
+require_once('.\twitter-api-php-master\TwitterAPIExchange.php');
 
 $urlTwitter = "https://twitter.com/PolaroidFrance/status/984753026048102400";
 $id = substr($urlTwitter, strrpos($urlTwitter, "/") + 1); //gets id of the tweet using the url
@@ -35,9 +35,9 @@ curl_close($curl);
 $result = json_decode($result, true);
 $parameters = json_decode($parameters, true);
 $textParameter = $parameters['text'];
-//var_dump($parameters);
+var_dump($parameters);
 //var_dump($result);
-echo($result['html']); // Displays the embedded tweet
+//echo($result['html']); // Displays the embedded tweet
 
 
 ?>

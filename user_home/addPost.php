@@ -27,7 +27,7 @@ if(!isset($_SESSION['userid'])){
 <div class="container">
       <h1>Add Post</h1><br>
       <div class="addPost">
-      <form class="accountSettings" method="post"  action="">
+      <form class="accountSettings" method="post"  action="../__treatment/new_post.php">
 
         <div class="form-group">
           <label for="sel1">Select Album:</label>
@@ -43,7 +43,7 @@ if(!isset($_SESSION['userid'])){
           <div class="radioNA">
           <label for="postType">Post Type:</label>
 
-          <input type="radio" class="postType" name="postType" value="existing" checked>Existing</input>
+          <input type="radio" class="postType" name="postType" value="existing" checked>Social media</input>
 
           <input type="radio" class="postType" name="postType" value="local">Local</input>
           </div>
@@ -53,10 +53,13 @@ if(!isset($_SESSION['userid'])){
             <input type="text" id="desc_field" placeholder="Give your post a description..." name="description"><br>
 
             <label for="chooseFile">Choose file or photo:</label>
-            <input type="file" id="photo_field" placeholder="Choose a file or photo to upload..." name="chooseFile"><br>
+            <input type="file" id="photo_field" placeholder="Choose a file or photo to upload..." name="file"><br>
+
+            <label for="text">Text:</label>
+            <input type="text" id="text_field" placeholder="Give your post a text..." name="text"><br>
           </div>
           <p>test</p>
-          <input type="text" id="url_field" placeholder="URL of Post..." name="chooseFile"><br>
+          <input type="text" id="url_field" placeholder="URL of Post..." name="link"><br>
           <a id = "testButton" >Please work</a><br>
           <button id = "addButton" class="btn btn-primary">Add Post</button><br>
           <div id="preview"></div>
