@@ -31,7 +31,7 @@ if(!isset($_SESSION['userid'])){
 
         <div class="form-group">
           <label for="sel1">Select Album:</label>
-          <select class="form-control ddPost">
+          <select class="form-control ddPost" name="album">
             <?php
             foreach ($albums as $key => $currentAlbum) {
               echo '<option value="'.$currentAlbum->getId().'">'.$currentAlbum->getName().'</option>';

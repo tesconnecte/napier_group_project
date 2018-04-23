@@ -79,7 +79,6 @@ if(!isset($_GET['id'])){
                             $lastpid = $current_post->getId();
                             if (!empty($current_post->getLink())) {
                                 $link = $current_post->getLink();
-                                echo ("<a href=\"editPost.php?id=".$current_post->getId()."\"");
                                 if (strpos($link, 'facebook') !== false) {
                                     echo("<div class=\"fb-post gallery-item\"data-href=\"" . $link . "\" data-width=\"350\" data-height=\"350\"></div>");
                                 } elseif (strpos($link, 'twitter') !== false) {
@@ -96,10 +95,11 @@ if(!isset($_GET['id'])){
                                     echo("<div class='gallery-item' id='insta-".$nbInstaPosts."'><script type='text/javascript'>loadInstaPost('".$link."',".$nbInstaPosts.");</script> </div>");
                                     $nbInstaPosts++;
                                 } else {
+                                    echo ("<a href=\"editPost.php?id=".$current_post->getId()."\"");
                                     echo(" <div class='gallery-item'><h3>" . $current_post->getText() . "</h3>");
                                     echo(" <img src='../__website_content/no_image.png'/></div>");
+                                    echo ('</a>');
                                 }
-                                echo ('</a>');
                             } else {
                                 echo ('<a href="editPost.php?id="'.$current_post->getId().'"');
                                 echo(" <div class='gallery-item'><h3>" . $current_post->getText . "</h3>");
