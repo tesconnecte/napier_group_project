@@ -1,30 +1,33 @@
-function reload_js(src) {
-    $('script[src="' + src + '"]').remove();
-    $('<script>').attr('src', src).appendTo('head');
-}
-
+var mode = "existing";
 
 $(document).ready(function () {
   $("#local_div").toggle();
   $("#desc_field").prop('required',false);
   $("#photo_field").prop('required',false);
   $("#url_field").prop('required',true);
+
+  //switch between local and existing posts mode
   $('input:radio[name=postType]').change(function () {
-    if (this.value == 'local') {
+    mode = this.value;
+    if (mode == 'local') {
       $("#local_div").toggle();
       $("#desc_field").prop('required',true);
       $("#photo_field").prop('required',true);
       $("#url_field").prop('required',false);
       $("#url_field").toggle();
+      $("#preview").toggle();
     }
-    else if (this.value == 'existing'){
+    else if (mode == 'existing'){
       $("#local_div").toggle();
       $("#desc_field").prop('required',false);
       $("#photo_field").prop('required',false);
       $("#url_field").prop('required',true);
       $("#url_field").toggle();
+      $("#preview").toggle();
     }
   });
+
+  //updating the preview of the post based on the link
   $("#url_field").change(function() {
     var url = $("#url_field").val();
     var words = url.split(".");
@@ -39,12 +42,18 @@ $(document).ready(function () {
     }
     switch (selected) {
       case "facebook":
-        $("#preview").load("../user_home/displayEmbed.php", {url : url, social : selected});
-        reload_js('https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5');
+        $("#preview").load("../user_home/displayEmbed.php", {url:url, social:selected}, function(){
+          alert($("#preview p").length);
+        });
         break;
       default:
 
     }
 
+    $("#testButton").click( function(){
+      if (mode == "existing") {
+        alert($("#preview:first-child").length);
+      }
+    });
   });
 });

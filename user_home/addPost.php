@@ -55,9 +55,10 @@ if(!isset($_SESSION['userid'])){
             <label for="chooseFile">Choose file or photo:</label>
             <input type="file" id="photo_field" placeholder="Choose a file or photo to upload..." name="chooseFile"><br>
           </div>
-
+          <p>test</p>
           <input type="text" id="url_field" placeholder="URL of Post..." name="chooseFile"><br>
-          <button class="btn btn-primary">Add Post</button><br>
+          <a id = "testButton" >Please work</a><br>
+          <button id = "addButton" class="btn btn-primary">Add Post</button><br>
           <div id="preview"></div>
 
 
