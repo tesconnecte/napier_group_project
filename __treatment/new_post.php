@@ -40,8 +40,8 @@ if(isset($_SESSION['userid'])) {
                 if ($parameters['text']!=null) {
                     $text = $parameters['text'];
                 }
-                if ($parameters['media_url_https']!=null) {
-                    $file = $parameters['media_url_https'];
+                if ($parameters["media_url"]!=null) {
+                    $file = $parameters["media_url"];
                 }
                 if ($parameters['name']!=null&&$parameters['screen_name']!=null&&$parameters['created_at']!=null) {
                     $description = $parameters['name'] . " " . $parameters['screen_name'] . " " . $parameters['created_at'];
