@@ -22,7 +22,6 @@ $( document ).ready(function() {
                     }
                     for(var i=0;i<callbackPostData.length;i++){
                         currentPost = callbackPostData[i];
-                       // console.log(currentPost);
                         currentLink = currentPost["link"];
                         currentText = currentPost["text"];
                         currentPostID=currentPost["id"];
@@ -30,10 +29,8 @@ $( document ).ready(function() {
                         $(".userGallery:last-child").append("<div class='gallery-item'></div>");
 
                         if(currentLink.includes('facebook')){
-                            //console.log("Facebook post");
                             $(".gallery-item:last-child").append("<div id='test' class=\"fb-post\"data-href=\""+ currentLink +" \" data-width=\"350\" data-height=\"350\"></div>");
                         }else if(currentLink.includes('twitter')){
-                            //console.log("Twitter post");
                             $.ajax({
                                 method:"POST",
                                 url:"../__treatment/curl_tweet_call.php",
@@ -53,7 +50,6 @@ $( document ).ready(function() {
                                 async: true
                             })
                                 .done(function(insta_data){
-                                    console.log("Insta data "+insta_data);
                                     $(".gallery-item:last-child").append(insta_data['html']);
                                     instgrm.Embeds.process();
                                 });
@@ -69,12 +65,10 @@ $( document ).ready(function() {
     }
 
     function btnDEaction(){
-        console.log("triggered");
         $(".btnDE").click(function (){
             var albumname = $(this).data("albumname");
             var albumid = $(this).data("albumid");
             parentElement =$(this).parent().parent();
-            //console.log(parentElement);
 
             $(this).text("\""+albumname+"\" album and its posts are going to be deleted. Are you sure ?");
 
@@ -111,7 +105,6 @@ $( document ).ready(function() {
 
         $.post("../__treatment/load_more_albums.php",{ lastaid: lastaid, nbalbums: nbalbums}, function(data){
             var callbackData = JSON.parse(data);
-            //console.log(data);
             if(callbackData.hasOwnProperty('link')){
                 window.location.replace(callbackData['link']);
             }else{
@@ -130,7 +123,6 @@ $( document ).ready(function() {
                     }else{
                         currentAlbumPrivacyString="Private";
                     }
-                    //console.log(currentAlbumId);
                     $("#albums").append("<div class='userGallery'><h2>"+currentAlbumName+" - "+currentAlbumPrivacyString+"</h2></div>");
                     $(".userGallery:last-child").append("<div class='btnalbumcontrols'  autofocus><a href=\"../user_home/albumView.php?id="+currentAlbumId+ "\" class=\"btn btn-primary btnVA\">View Album</a> <a href=\"../user_home/addPost.php?albumid="+currentAlbumId+ "\" class=\"btn btn-primary btnAP\">Add Post</a><a href=\"../user_home/editAlbum.php?id="+currentAlbumId+ "\" class=\"btn btn-primary btnEA\">Edit Album</a> <a href='javascript: void(0);' data-albumid='"+currentAlbumId+"' data-albumname='"+currentAlbumName +"' class=\"btn btn-primary btnDE\">Delete Album</a></div>");
 
@@ -141,7 +133,6 @@ $( document ).ready(function() {
         });
 
         lastaid = $("#loadMoreAlbums").attr("data-lastaid");
-       // console.log(lastaid);
         if(ultimateaid<=lastaid){
             $("#loadMoreAlbums").remove();
             $(".loadMore").append("<h3>No more albums !</h3>")

@@ -17,6 +17,7 @@ if(!isset($_SESSION['userid'])){
     echo('<link rel="stylesheet" href="/resources/demos/style.css">');
     echo('<script src="../__scripts/jquery-ui.js"></script>');
     echo('<script type="text/javascript" src="../user_home/js/index.js"></script>');
+    echo('<script type="text/javascript" src="../user_home/js/insta_post_through_js.js"></script>');
 
  include("../header/header.php");
     $dao = new DAO();
@@ -28,6 +29,7 @@ if(!isset($_SESSION['userid'])){
     $lastaid = 0;
     $nbAlbumsToDisplay=5;
     $ultimateAlbumID = 0;
+    $nbInstaPosts=0;
     if(count($albums)>0){
         $albumToTreat = $albums[(count($albums)-1)];
         $ultimateAlbumID = $albumToTreat->getId();
@@ -94,7 +96,8 @@ if(!isset($_SESSION['userid'])){
                                     $result = json_decode($result, true);
                                     echo("<div class='gallery-item'>" . $result['html'] . "</div>"); // Displays the embedded tweet
                                 } elseif (strpos($link, 'instagram') !== false) {
-                                    echo("<div class='gallery-item'><blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"" . $link . "\" data-instgrm-version=\"8\"  MAXWIDTH='350' MAXHEIGHT='350'></blockquote></div>");
+                                    echo("<div class='gallery-item' id='insta-".$nbInstaPosts."'><script type='text/javascript'>loadInstaPost('".$link."',".$nbInstaPosts.");</script> </div>");
+                                    $nbInstaPosts++;
                                 } else {
                                     echo(" <div class='gallery-item'><h3>" . $current_post->getText() . "</h3>");
                                     echo(" <img src='../__website_content/no_image.png'/></div>");

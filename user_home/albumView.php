@@ -32,6 +32,7 @@ if(!isset($_GET['id'])){
         $nbPostsToDisplay=9;
         $lastpid = 0;
         $lastAlbumPostID=0;
+        $nbInstaPosts=0;
         if(count($posts)>0){
             $postToTreat = $posts[(count($posts)-1)];
             $lastAlbumPostID = $postToTreat->getId();
@@ -44,6 +45,7 @@ if(!isset($_GET['id'])){
     include("../header/htmlhead.php");
     echo('<link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">');
     echo('<script type="text/javascript" src="../user_home/js/loadMorePost.js"></script>');
+    echo('<script type="text/javascript" src="../user_home/js/insta_post_through_js.js"></script>');
     include("../header/header.php");
     ?>
     <body>
@@ -90,7 +92,8 @@ if(!isset($_GET['id'])){
                                     $result = json_decode($result, true);
                                     echo("<div class='gallery-item'>" . $result['html'] . "</div>"); // Displays the embedded tweet
                                 } elseif (strpos($link, 'instagram') !== false) {
-                                    echo("<div class='gallery-item'><blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"" . $link . "\" data-instgrm-version=\"8\"  MAXWIDTH='350' MAXHEIGHT='350'></blockquote></div>");
+                                    echo("<div class='gallery-item' id='insta-".$nbInstaPosts."'><script type='text/javascript'>loadInstaPost('".$link."',".$nbInstaPosts.");</script> </div>");
+                                    $nbInstaPosts++;
                                 } else {
                                     echo(" <div class='gallery-item'><h3>" . $current_post->getText() . "</h3>");
                                     echo(" <img src='../__website_content/no_image.png'/></div>");
