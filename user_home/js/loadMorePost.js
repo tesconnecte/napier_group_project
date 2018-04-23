@@ -37,7 +37,7 @@ $( document ).ready(function() {
                             $(".gallery-item:last-child").append(tweetHTML);
                         });
                     }else if(currentLink.includes('instagram')){
-                        instgrm.Embeds.process();
+                       // instgrm.Embeds.process();
                         $.get("https://api.instagram.com/oembed?url="+currentLink+"&MAXWIDTH=350",function (insta_data) {
                             $("#albumposts").append("<div class='gallery-item'></div>");
                             $(".gallery-item:last-child").append(insta_data['html']);

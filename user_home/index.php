@@ -25,6 +25,14 @@ if(!isset($_SESSION['userid'])){
     $str_usr_name = $user->getFirstName() . " " . $user->getSurname();
 
     $albums = $dao->getAlbums($_SESSION['userid']);
+    $lastaid = 0;
+    $nbAlbumsToDisplay=5;
+    $ultimateAlbumID = 0;
+    if(count($albums)>0){
+        $albumToTreat = $albums[(count($albums)-1)];
+        $ultimateAlbumID = $albumToTreat->getId();
+    }
+
     ?>
 
     <body>
@@ -46,10 +54,11 @@ if(!isset($_SESSION['userid'])){
 
         } else {
             $current_album;
-            for ($i = 0; $i < 5; ++$i) {
+            for ($i = 0; $i < $nbAlbumsToDisplay; ++$i) {
                 if($i<count($albums)) {
 
                     $current_album = $albums[$i];
+                    $lastaid = $current_album->getId();
                     $posts = $dao->getPosts($current_album->getId());
 
                     echo(" <div class='userGallery'>");
@@ -59,6 +68,10 @@ if(!isset($_SESSION['userid'])){
                     } else {
                         echo(" <h2>" . $current_album->getName() . " - Private </h2>");
                     }
+                    echo("<div class='btnalbumcontrols'  autofocus><a href=\"../user_home/albumView.php?id=" . $current_album->getId() . "\" class=\"btn btn-primary btnVA\">View Album</a>
+                        <a href=\"../user_home/addPost.php?albumid=" . $current_album->getId() . "\" class=\"btn btn-primary btnAP\">Add Post</a>
+                            <a href=\"../user_home/editAlbum.php?id=" . $current_album->getId() . "\" class=\"btn btn-primary btnEA\">Edit Album</a>
+                            <a href='javascript: void(0);' data-albumid='" . $current_album->getId() . "' data-albumname='" . $current_album->getName() . "' class=\"btn btn-primary btnDE\">Delete Album</a></div>");
                     //echo("<h4> My posts </h4>");
                     if (count($posts) == 0) {
                         echo("<div><h3>No posts in this album</h3></div>");
@@ -92,12 +105,6 @@ if(!isset($_SESSION['userid'])){
                             }
                         }
                 }
-
-                    echo("<div class='btnalbumcontrols'  autofocus><a href=\"../user_home/albumView.php?id=" . $current_album->getId() . "\" class=\"btn btn-primary btnVA\">View Album</a>
-                        <a href=\"../user_home/addPost.php?albumid=" . $current_album->getId() . "\" class=\"btn btn-primary btnAP\">Add Post</a>
-                            <a href=\"../user_home/editAlbum.php?id=" . $current_album->getId() . "\" class=\"btn btn-primary btnEA\">Edit Album</a>
-                            <a href='javascript: void(0);' data-albumid='" . $current_album->getId() . "' data-albumname='" . $current_album->getName() . "' class=\"btn btn-primary btnDE\">Delete Album</a></div>");
-
                     echo(" </div>");
 
                 }
@@ -106,7 +113,7 @@ if(!isset($_SESSION['userid'])){
         ?>
      </div>
     <div class="loadMore">
-    <button class="btn btn-primary">Load More</button>
+        <?php echo("<button id='loadMoreAlbums' class='btn btn-primary'  data-lastaid='".$lastaid."' data-nbalbums='".$nbAlbumsToDisplay."' data-ultimateaid='".$ultimateAlbumID."'>Load More</button>"); ?>
     </div>
 
     </body>

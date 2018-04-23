@@ -62,8 +62,40 @@
             $req = $this->db->prepare("select a.* 
                                                 from Album a, useralbums ua 
                                                 where a.id = ua.albumid
-                                                and ua.userid = :id");
+                                                and ua.userid = :id
+                                                ORDER BY a.id");
             $req->execute(array(':id' => $userId));
+            $result = $req->fetchAll();
+            $albums = array();
+            if(!empty($result)){
+                for ($i=0; $i<count($result); $i++){
+                    $req2 = $this->db->prepare("select ua.userid
+                    from Useralbums ua 
+                    where ua.albumid = :id ");
+                    $req2->execute(array(':id' => $result[$i]['id']));
+                    $result2 = $req2->fetchAll();
+                    if(!empty($result2)) {
+                        $album = new Album($result[$i]['id'], $result[$i]['name'], $result[$i]['isPublic'], $result2[0]['userid']);
+                        $albums[$i] = $album;
+                    }
+                }
+            }
+            return $albums;
+        }
+
+        function getAlbumsFromRange ($userid,$lastid,$nbalbums)
+        {
+            $req = $this->db->prepare("select a.* 
+                                                from Album a, useralbums ua 
+                                                where a.id = ua.albumid
+                                                and ua.userid = :id
+                                                and a.id> :lid
+                                                ORDER BY a.id
+                                                LIMIT  :nba");
+            $req->bindValue(':id',$userid,PDO::PARAM_INT);
+            $req->bindValue(':lid',$lastid,PDO::PARAM_INT);
+            $req->bindValue(':nba',$nbalbums,PDO::PARAM_INT);
+            $req->execute();
             $result = $req->fetchAll();
             $albums = array();
             if(!empty($result)){
