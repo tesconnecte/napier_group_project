@@ -11,16 +11,26 @@ require_once ("../__class/autoload_Class.php");
 if(!isset($_SESSION['userid'])){
     header('Location: ../home/logIn.php?error=2');
 } else {
+    if(!isset($_GET['id'])){
+        header('Location: ../user_home/index.php');
+    } else {
+        try {
+            $dao = new DAO();
+
+            $user = $dao->getUser($_SESSION['userid']);
+            $str_usr_name = $user->getFirstName() . " " . $user->getSurname();
+
+            $albums = $dao->getAlbums($_SESSION['userid']);
+            $post = $dao->getPost($_GET['id']);
+
+        } catch (Exception $e){
+            header('Location: ../user_home/errorActionUser.php?errType=database&errID=1');
+        }
+    }
     include("../header/htmlhead.php");
     echo('<link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">');
 
     include("../header/header.php");
-    $dao = new DAO();
-
-    $user = $dao->getUser($_SESSION['userid']);
-    $str_usr_name = $user->getFirstName() . " " . $user->getSurname();
-
-    $albums = $dao->getAlbums($_SESSION['userid']);
     ?>
     <html>
     <head>
@@ -34,7 +44,7 @@ if(!isset($_SESSION['userid'])){
       <h1>Edit Post</h1><br>
 
       <div class="addPost">
-      <form class="accountSettings" method="post"  action="">
+      <form class="accountSettings" method="post"  action="../__treatment/edit_post.php?id=<?php echo ($post->getId()) ?>">
 
         <div class="form-group">
           <label for="sel1">Change Album:</label>

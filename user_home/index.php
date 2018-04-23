@@ -13,17 +13,32 @@ if(!isset($_SESSION['userid'])){
 } else {
     include("../header/htmlhead.php");
     echo('<link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">');
+    echo('<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">');
+    echo('<link rel="stylesheet" href="/resources/demos/style.css">');
+    echo('<script src="../__scripts/jquery-ui.js"></script>');
+    echo('<script type="text/javascript" src="../user_home/js/index.js"></script>');
+    echo('<script type="text/javascript" src="../user_home/js/insta_post_through_js.js"></script>');
 
-    include("../header/header.php");
+ include("../header/header.php");
     $dao = new DAO();
 
     $user = $dao->getUser($_SESSION['userid']);
     $str_usr_name = $user->getFirstName() . " " . $user->getSurname();
 
     $albums = $dao->getAlbums($_SESSION['userid']);
+    $lastaid = 0;
+    $nbAlbumsToDisplay=5;
+    $ultimateAlbumID = 0;
+    $nbInstaPosts=0;
+    if(count($albums)>0){
+        $albumToTreat = $albums[(count($albums)-1)];
+        $ultimateAlbumID = $albumToTreat->getId();
+    }
+
     ?>
+
     <body>
-    <div class="container"> <!-- Jack's Code -->
+    <div class="container">
     <h1>Welcome Back,  <?php echo($str_usr_name) ?></h1>
 
         <div class="userButtons">
@@ -33,6 +48,7 @@ if(!isset($_SESSION['userid'])){
         </div>
 
 <h1>My albums :</h1>
+        <div id="albums">
 
         <?php
         if (($albums == null) || (empty($albums))) {
@@ -40,77 +56,67 @@ if(!isset($_SESSION['userid'])){
 
         } else {
             $current_album;
-            for ($i = 0; $i < count($albums); ++$i) {
-                $current_album = $albums[$i];
-                $posts = $dao->getPosts($current_album->getId());
+            for ($i = 0; $i < $nbAlbumsToDisplay; ++$i) {
+                if($i<count($albums)) {
 
-                if($i%2==0){
-                    echo(" <div class='div2albums'>");
-                    echo(" <div class='userGallery cf galleryLeft'>");
-                } else {
-                    echo(" <div class='userGallery cf galleryRight'>");
-                }
+                    $current_album = $albums[$i];
+                    $lastaid = $current_album->getId();
+                    $posts = $dao->getPosts($current_album->getId());
 
-                if ($current_album->getisPublic() == 1) {
-                    echo(" <h3>" . $current_album->getName() ."  - Public </h3>");
-                } else {
-                    echo(" <h3>" . $current_album->getName() ." - Private </h3>");
-                }
-                //echo("<h4> My posts </h4>");
-                if(count($posts)==0){
-                    echo ("<div><p>No posts in this album</p></div>");
-                }
-                for ($j = 0; $j < count($posts); ++$j) {
-                    $current_post = $posts[$j];
-                    if(!empty($current_post->getLink())) {
-                        echo(" <div>");
-                        $link = $current_post->getLink();
-                        if (strpos($link, 'facebook') !== false) {
-                            echo("<div class=\"fb-post\"data-href=\"".$link."\"></div>");
-                        } elseif (strpos($link, 'twitter') !== false) {
-                            //echo($link);
-                            $curl = curl_init();
-                            curl_setopt_array($curl, array(
-                                CURLOPT_RETURNTRANSFER => 1,
-                                CURLOPT_URL => 'https://publish.twitter.com/oembed?url='.$link
-                            ));
-                            $result = curl_exec($curl);
-                            curl_close($curl);
-                            $result = json_decode($result, true);
-                            echo($result['html']); // Displays the embedded tweet
+                    echo(" <div class='userGallery'>");
 
-                        } elseif (strpos($link, 'instagram') !== false) {
-                            echo("<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"".$link."\" data-instgrm-version=\"8\" ></blockquote>");
-                        } else {
-                            echo(" <p>" . $current_post->getDescription() . "</p>");
-                            echo(" <img src='../__website_content/no_image.png'/>");
+                    if ($current_album->getisPublic() == 1) {
+                        echo(" <h2>" . $current_album->getName() . "  - Public </h2>");
+                    } else {
+                        echo(" <h2>" . $current_album->getName() . " - Private </h2>");
+                    }
+                    echo("<div class='btnalbumcontrols'  autofocus><a href=\"../user_home/albumView.php?id=" . $current_album->getId() . "\" class=\"btn btn-primary btnVA\">View Album</a>
+                        <a href=\"../user_home/addPost.php?albumid=" . $current_album->getId() . "\" class=\"btn btn-primary btnAP\">Add Post</a>
+                            <a href=\"../user_home/editAlbum.php?id=" . $current_album->getId() . "\" class=\"btn btn-primary btnEA\">Edit Album</a>
+                            <a href='javascript: void(0);' data-albumid='" . $current_album->getId() . "' data-albumname='" . $current_album->getName() . "' class=\"btn btn-primary btnDE\">Delete Album</a></div>");
+                    //echo("<h4> My posts </h4>");
+                    if (count($posts) == 0) {
+                        echo("<div><h3>No posts in this album</h3></div>");
+                    }
+                    for ($j = 0; $j < 4; ++$j) {
+                        if ($j < count($posts)) {
+                            $current_post = $posts[$j];
+                            if (!empty($current_post->getLink())) {
+                                $link = $current_post->getLink();
+                                if (strpos($link, 'facebook') !== false) {
+                                    echo("<div class=\"fb-post gallery-item\"data-href=\"" . $link . "\" data-width=\"350\" data-height=\"350\"></div>");
+                                } elseif (strpos($link, 'twitter') !== false) {
+                                    $curl = curl_init();
+                                    curl_setopt_array($curl, array(
+                                        CURLOPT_RETURNTRANSFER => 1,
+                                        CURLOPT_URL => 'https://publish.twitter.com/oembed?url=' . $link . '&maxwidth=350&maxheight=350'
+                                    ));
+                                    $result = curl_exec($curl);
+                                    curl_close($curl);
+                                    $result = json_decode($result, true);
+                                    echo("<div class='gallery-item'>" . $result['html'] . "</div>"); // Displays the embedded tweet
+                                } elseif (strpos($link, 'instagram') !== false) {
+                                    echo("<div class='gallery-item' id='insta-".$nbInstaPosts."'><script type='text/javascript'>loadInstaPost('".$link."',".$nbInstaPosts.");</script> </div>");
+                                    $nbInstaPosts++;
+                                } else {
+                                    echo(" <div class='gallery-item'><h3>" . $current_post->getText() . "</h3>");
+                                    echo(" <img src='../__website_content/no_image.png'/></div>");
+                                }
+                            } else {
+                                echo(" <div class='gallery-item'><h3>" . $current_post->getText . "</h3>");
+                                echo(" <img src='../__website_content/no_image.png'/></div>");
+                            }
                         }
-                        echo("</div>");
-                    }
-                    else {
-                        echo(" <div>");
-                        echo(" <p>" . $current_post->getDescription() . "</p>");
-                        echo(" <img src='../__website_content/no_image.png'/>");
-                        echo("</div>");
-                    }
                 }
-
-                echo ("<a href=\"../user_home/albumView.php?id=".$current_album->getId()."\" class=\"btn btn-primary btnVA\">View Album</a>
-                        <a href=\"../user_home/addPost.php?albumid=".$current_album->getId()."\" class=\"btn btn-primary btnAP\">Add Post</a>
-                            <a href=\"../user_home/editAlbum.php?id=".$current_album->getId()."\" class=\"btn btn-primary btnEA\">Edit Album</a><br><br>");
-
-                echo(" </div>");
-                if($i%2==1){
                     echo(" </div>");
-                }elseif (($i+1)==count($albums)){
-                    echo(" </div>");
+
                 }
             }
         }
         ?>
-
+     </div>
     <div class="loadMore">
-    <button class="btn btn-primary">Load More</button>
+        <?php echo("<button id='loadMoreAlbums' class='btn btn-primary'  data-lastaid='".$lastaid."' data-nbalbums='".$nbAlbumsToDisplay."' data-ultimateaid='".$ultimateAlbumID."'>Load More</button>"); ?>
     </div>
 
     </body>

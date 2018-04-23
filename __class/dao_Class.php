@@ -62,8 +62,40 @@
             $req = $this->db->prepare("select a.* 
                                                 from Album a, useralbums ua 
                                                 where a.id = ua.albumid
-                                                and ua.userid = :id");
+                                                and ua.userid = :id
+                                                ORDER BY a.id");
             $req->execute(array(':id' => $userId));
+            $result = $req->fetchAll();
+            $albums = array();
+            if(!empty($result)){
+                for ($i=0; $i<count($result); $i++){
+                    $req2 = $this->db->prepare("select ua.userid
+                    from Useralbums ua 
+                    where ua.albumid = :id ");
+                    $req2->execute(array(':id' => $result[$i]['id']));
+                    $result2 = $req2->fetchAll();
+                    if(!empty($result2)) {
+                        $album = new Album($result[$i]['id'], $result[$i]['name'], $result[$i]['isPublic'], $result2[0]['userid']);
+                        $albums[$i] = $album;
+                    }
+                }
+            }
+            return $albums;
+        }
+
+        function getAlbumsFromRange ($userid,$lastid,$nbalbums)
+        {
+            $req = $this->db->prepare("select a.* 
+                                                from Album a, useralbums ua 
+                                                where a.id = ua.albumid
+                                                and ua.userid = :id
+                                                and a.id> :lid
+                                                ORDER BY a.id
+                                                LIMIT  :nba");
+            $req->bindValue(':id',$userid,PDO::PARAM_INT);
+            $req->bindValue(':lid',$lastid,PDO::PARAM_INT);
+            $req->bindValue(':nba',$nbalbums,PDO::PARAM_INT);
+            $req->execute();
             $result = $req->fetchAll();
             $albums = array();
             if(!empty($result)){
@@ -88,8 +120,41 @@
             $req = $this->db->prepare("select p.* 
                                                 from Personnalpost p, albumpost ap
                                                 where p.id = ap.postid
-                                                and ap.albumid = :id");
+                                                and ap.albumid = :id
+                                                ORDER BY  p.id");
             $req->execute(array(':id' => $albumId));
+            $result = $req->fetchAll();
+            $posts = array();
+            if(!empty($result)){
+                for ($i=0; $i<count($result); $i++){
+                    $req2 = $this->db->prepare("select ap.albumid
+                    from AlbumPost ap
+                    where ap.postid = :id ");
+                    $req2->execute(array(':id' => $result[$i]['id']));
+                    $result2 = $req2->fetchAll();
+                    //var_dump($result2[0]['albumid']);
+                    if(!empty($result2)) {
+                        $post = new Personalpost($result[$i]['id'], $result[$i]['link'], $result2[0]['albumid'], $result[$i]['description'], $result[$i]['image'], $result[$i]['text']);
+                        $posts[$i] = $post;
+                    }
+                }
+            }
+            return $posts;
+        }
+
+        function getPostsFromRange($albumId,$lastid,$nbposts)
+        {
+            $req = $this->db->prepare("select p.* 
+                                                from Personnalpost p, albumpost ap
+                                                where p.id = ap.postid
+                                                and ap.albumid = :id
+                                                and p.id> :lid
+                                                ORDER BY  p.id 
+                                                LIMIT :nbp");
+            $req->bindValue(':id',$albumId,PDO::PARAM_INT);
+            $req->bindValue(':lid',$lastid,PDO::PARAM_INT);
+            $req->bindValue(':nbp',$nbposts,PDO::PARAM_INT);
+            $req->execute();
             $result = $req->fetchAll();
             $posts = array();
             if(!empty($result)){

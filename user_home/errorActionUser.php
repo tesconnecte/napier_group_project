@@ -32,11 +32,11 @@ if(!isset($_SESSION['userid'])){
             }
         } else if($_GET['errType']=='user'){
             if($_GET['errID']=='1'){
-                echo ("<h3>Some fields aren't field. Action cancelled.</h3>");
+                echo ("<h3>Some fields aren't filled. Action cancelled.</h3>");
             } else if($_GET['errID']=='2'){
                 echo ("<h3>The birth date doesn't have the right format, update cancelled.</h3>");
             }else if($_GET['errID']=='3'){
-                echo ("<h3>You can't update albums you don't own. Update cancelled.</h3>");
+                echo ("<h3>You can't update or delete albums you don't own. Action cancelled.</h3>");
             }else if($_GET['errID']=='4'){
                 echo ("<h3>The current password you typed is not correct. Your password hasn't been changed. Please try again.</h3>");
             }else if($_GET['errID']=='5'){
