@@ -15,6 +15,7 @@ if(isset($_SESSION['userid'])){
         try{
             $dao = new DAO();
             $post = $dao->getPost($_GET['id']);
+            $useralbums = $dao->getAlbums($_SESSION['userid']);
             var_dump($post);
             $ownsAlbum=false;
             for ($i = 0; $i < count($useralbums); ++$i) {
@@ -24,12 +25,12 @@ if(isset($_SESSION['userid'])){
                 }
             }
 
-            //if($ownsAlbum==true){
+            if($ownsAlbum==true){
                 $dao->updatePost($_GET['id'],$_POST['link'],$_POST['description'],$_POST['image'],$_POST['text']);
                 header('Location: ../user_home/successActionUser.php?action=7');
-//            }else{
-//                header('Location: ../user_home/errorActionUser.php?errType=user&errID=3');
-//            }
+            }else{
+                header('Location: ../user_home/errorActionUser.php?errType=user&errID=3');
+            }
 
         } catch (Exception $e){
             header('Location: ../user_home/errorActionUser.php?errType=database&errID=1');
