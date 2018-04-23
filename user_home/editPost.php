@@ -21,6 +21,7 @@ if(!isset($_SESSION['userid'])){
             $str_usr_name = $user->getFirstName() . " " . $user->getSurname();
 
             $albums = $dao->getAlbums($_SESSION['userid']);
+
             $post = $dao->getPost($_GET['id']);
 
         } catch (Exception $e){
@@ -49,15 +50,16 @@ if(!isset($_SESSION['userid'])){
         <div class="form-group">
           <label for="sel1">Change Album:</label>
           <select class="form-control ddPost">
-            <option>Music Festival</option>
-            <option>Party</option>
-            <option>Holiday</option>
-            <option>Birthday</option>
+              <?php
+              echo(var_dump($albums));
+              for ($i = 0; $i < count($albums); ++$i) {
+                  $current_album = $albums[$i];
+                  echo ("<option>".$current_album->getName()."</option>");
+              }
+              ?>
+
         </select>
         <br>
-
-          <label for="title">Change Title:</label>
-          <input type="text" placeholder="Give your post a title..." name="title" required><br>
 
           <div class="radioNA">
           <label for="postType">Change Post Type:</label>
@@ -73,13 +75,24 @@ if(!isset($_SESSION['userid'])){
           <br>
 
           <label for="description">Change Description:</label>
-          <input type="text" placeholder="Give your post a description..." name="description" required><br>
+          <input type="text" placeholder="Give your post a description..." name="description" value="<?php echo($post->getDescription()) ?>" required><br>
 
-          <img src="../__website_content/lorem.jpg"><br>
-
+            <?php
+            if ($post->getImage() != null) {
+                echo(" <img src='../'" . $post->getImage() . "/>");
+            } else {
+                echo(" <img src='../__website_content/no_image.png'>");
+            }
+            ?>
+            <br>
           <label for="chooseFile">Change Media:</label>
-          <input type="file" placeholder="Choose a file or photo to upload..." name="chooseFile" required><br>
-          <input type="text" placeholder="URL of Post..." name="chooseFile" required><br>
+          <input type="file" placeholder="Choose a file or photo to upload..." name="image" value="<?php echo($post->getImage()) ?>" ><br>
+
+            <label for="chooseLink">Change Link:</label>
+            <input type="text" placeholder="URL of Post..." name="link" value="<?php echo($post->getLink()) ?>" required><br>
+
+            <label for="chooseText">Change Text:</label>
+            <input type="text" placeholder="Text of Post..." name="text" value="<?php echo($post->getText()) ?>" required><br>
 
 
           <button class="btn btn-primary">Save Changes</button>

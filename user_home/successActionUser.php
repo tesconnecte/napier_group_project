@@ -29,6 +29,8 @@ if(!isset($_SESSION['userid'])){
             echo ("<h3>Album deleted</h3>");
         }else if($_GET['action']=='6'){
             echo ("<h3>Add new action completed</h3>");
+        }else if($_GET['action']=='7'){
+            echo ("<h3>Post details updated</h3>");
         }else{
             header('Location: ../user_home/index.php');
         }
