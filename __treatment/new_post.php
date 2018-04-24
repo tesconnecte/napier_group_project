@@ -41,11 +41,11 @@ if(isset($_SESSION['userid'])) {
                     $text = $parameters['text'];
                 }
 
-                if ($parameters["media_url"]!=null) {
-                    $file = $parameters["media_url"];
+                if ($parameters['entities']['media'][0]['media_url']!=null) {
+                    $file = $parameters['entities']['media'][0]['media_url'];
                 }
-                if ($parameters['name']!=null&&$parameters['screen_name']!=null&&$parameters['created_at']!=null) {
-                    $description = $parameters['name'] . " " . $parameters['screen_name'] . " " . $parameters['created_at'];
+                if ($parameters['user']['name']!=null&&$parameters['user']['screen_name']!=null&&$parameters['created_at']!=null) {
+                    $description = $parameters['user']['name'] . " " . $parameters['user']['screen_name'] . " " . $parameters['created_at'];
                 }
                 $link = $_POST['link'];
             } else {
