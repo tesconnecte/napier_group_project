@@ -40,6 +40,7 @@ if(isset($_SESSION['userid'])) {
                 if ($parameters['text']!=null) {
                     $text = $parameters['text'];
                 }
+
                 if ($parameters["media_url"]!=null) {
                     $file = $parameters["media_url"];
                 }
@@ -49,11 +50,14 @@ if(isset($_SESSION['userid'])) {
                 $link = $_POST['link'];
             } else {
                 $link = "Local";
-                if (isset($_POST['file'])) {
-                    $file = $_POST['file'];
-                }else {
-                    $file = "";
+
+                if($_FILES['fileToUpload']['size']>0) {
+                    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+                    $file = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                }else{
+                    $file = "NULL";
                 }
+
                 if (isset($_POST['description'])) {
                     $description = $_POST['description'];
                 }else {
@@ -66,7 +70,49 @@ if(isset($_SESSION['userid'])) {
                 }
             }
 
-            $dao->insertPost($link,$description,$file,$text,$album);
+            $postId=$dao->insertPost($link,$description,$file,$text,$album);
+
+            if($_FILES['fileToUpload']['size']>0) {
+                $uploadOk = 1;
+                $target_dir = "../user_content/".$_SESSION['userid']."/".$_POST['album']."/";
+                $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                $target_dest = $target_dir.$postId.'.'.$imageFileType;
+                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+
+                if($check === false) {
+                    header('Location: ../user_home/errorActionUser.php?errType=user&errID=6');
+                    $uploadOk = 0;
+                }
+
+                if (file_exists($target_file)) {
+                    header('Location: ../user_home/errorActionUser.php?errType=user&errID=7');
+                    $uploadOk = 0;
+                }
+
+                if ($_FILES["fileToUpload"]["size"] > 2000000) {
+                    header('Location: ../user_home/errorActionUser.php?errType=database&errID=5');
+                    $uploadOk = 0;
+                }
+
+                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+                    header('Location: ../user_home/errorActionUser.php?errType=user&errID=6');
+                    $uploadOk = 0;
+                }
+
+                if ($uploadOk == 0) {
+                    header('Location: ../user_home/errorActionUser.php?errType=database&errID=6');
+
+                } else {
+                    if (!move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_dest)) {
+                        header('Location: ../user_home/errorActionUser.php?errType=database&errID=6');
+                    }
+                }
+            }
+
+            //var_dump($_FILES['fileToUpload']);
+
+
             header('Location: ../user_home/successActionUser.php?action=8');
         } catch (Exception $e){
             header('Location: ../user_home/errorActionUser.php?errType=database&errID=1');

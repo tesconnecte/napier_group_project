@@ -18,25 +18,25 @@ if(!isset($_SESSION['userid'])){
     if(isset($_GET['action'])){
         echo ("<div class=\"container\">");
         if($_GET['action']=='1'){
-            echo ("<h3>Album created !</h3>");
+            echo ("<h1 id='actionSuccededOrFailed'>Album created !</h1>");
         } else if($_GET['action']=='2'){
-            echo ("<h3>Account details updated</h3>");
+            echo ("<h1 id='actionSuccededOrFailed'>Account details updated</h1>");
         }else if($_GET['action']=='3'){
-            echo ("<h3>Album details updated</h3>");
+            echo ("<h1 id='actionSuccededOrFailed'>Album details updated</h1>");
         }else if($_GET['action']=='4'){
-            echo ("<h3>Password successfully changed</h3>");
+            echo ("<h1 id='actionSuccededOrFailed'>Password successfully changed</h1>");
         }else if($_GET['action']=='5'){
-            echo ("<h3>Album deleted</h3>");
+            echo ("<h1 id='actionSuccededOrFailed'>Album deleted</h1>");
         }else if($_GET['action']=='6'){
-            echo ("<h3>Add new action completed</h3>");
+            echo ("<h1 id='actionSuccededOrFailed'>Add new action completed</h1>");
         }else if($_GET['action']=='7'){
-            echo ("<h3>Post details updated</h3>");
+            echo ("<h1 id='actionSuccededOrFailed'>Post details updated</h1>");
         }else if($_GET['action']=='8'){
-            echo ("<h3>Post added!</h3>");
+            echo ("<h1 id='actionSuccededOrFailed'>Post added!</h1>");
         }else{
             header('Location: ../user_home/index.php');
         }
-        echo ("<h3><a href='../user_home/index.php'> Back to home page</a></h3></div>");
+        echo ("<h1 id='actionSuccededOrFailed'><a href='../user_home/index.php'> Back to home page</a></h1></div>");
     }else{
         header('Location: ../user_home/index.php');
     }

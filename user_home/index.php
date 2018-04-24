@@ -100,11 +100,19 @@ if(!isset($_SESSION['userid'])){
                                     $nbInstaPosts++;
                                 } else {
                                     echo(" <div class='gallery-item'><h3>" . $current_post->getText() . "</h3>");
-                                    echo(" <img src='../__website_content/no_image.png'/></div>");
+                                    if($current_post->getImage()!="NULL"){
+                                        echo(" <img src='../user_content/".$_SESSION['userid']."/".$current_album->getId()."/".$current_post->getId().".".$current_post->getImage()."'></div>");
+                                    }else{
+                                        echo(" <img src='../__website_content/no_image.png'/></div>");
+                                    }
                                 }
                             } else {
                                 echo(" <div class='gallery-item'><h3>" . $current_post->getText . "</h3>");
-                                echo(" <img src='../__website_content/no_image.png'/></div>");
+                                if($current_post->getImage()!="NULL"){
+                                    echo(" <img src='../user_content/".$_SESSION['userid']."/".$current_album->getId()."/".$current_post->getId().".".$current_post->getImage()."'></div>");
+                                }else{
+                                    echo(" <img src='../__website_content/no_image.png'/></div>");
+                                }
                             }
                         }
                 }

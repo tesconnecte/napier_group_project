@@ -18,39 +18,45 @@ if(!isset($_SESSION['userid'])){
     if(isset($_GET['errType'])&&(isset($_GET['errID']))){
         if($_GET['errType']=='database'){
             if($_GET['errID']=='1'){
-                echo ("<h3>Database error, please contact administrator</h3>");
+                echo ("<h1 id='actionSuccededOrFailed'>Database error, please contact administrator</h1>");
             } else if($_GET['errID']=='2'){
-                echo ("<h3>Another account uses this e-mail, update cancelled.</h3>");
+                echo ("<h1 id='actionSuccededOrFailed'>Another account uses this e-mail, update cancelled.</h1>");
             }else if($_GET['errID']=='3'){
-                echo ("<h3>Account creation error: An account with this email already exists. Log in.</h3>");
+                echo ("<h1 id='actionSuccededOrFailed'>Account creation error: An account with this email already exists. Log in.</h1>");
             }else if($_GET['errID']=='4'){
-                echo ("<h3>Account creation error: Date format is not correct or date does not exist.</h3>");
+                echo ("<h1 id='actionSuccededOrFailed'>Account creation error: Date format is not correct or date does not exist.</h1>");
             }else if($_GET['errID']=='5'){
-                echo ("<h3>Server error : ". $_GET['msg'] ."</h3>");
+                echo ("<h1 id='actionSuccededOrFailed'>The file you provided is too heavy. Maximum size: 2Mo. Post added without the image. </h1>");
+            }else if($_GET['errID']=='6'){
+                echo ("<h1 id='actionSuccededOrFailed'>Error during image importation. Post added without the image. </h1>");
             }else{
-                echo ("<h3>Unknown error please contact administrator</h3>");
+                echo ("<h1 id='actionSuccededOrFailed'>Unknown error please contact administrator</h1>");
             }
         } else if($_GET['errType']=='user'){
             if($_GET['errID']=='1'){
-                echo ("<h3>Some fields aren't filled. Action cancelled.</h3>");
+                echo ("<h1 id='actionSuccededOrFailed'>Some fields aren't filled. Action cancelled.</h1>");
             } else if($_GET['errID']=='2'){
-                echo ("<h3>The birth date doesn't have the right format, update cancelled.</h3>");
+                echo ("<h1 id='actionSuccededOrFailed'>The birth date doesn't have the right format, update cancelled.</h1>");
             }else if($_GET['errID']=='3'){
-                echo ("<h3>You can't update or delete albums you don't own. Action cancelled.</h3>");
+                echo ("<h1 id='actionSuccededOrFailed'>You can't update or delete albums you don't own. Action cancelled.</h1>");
             }else if($_GET['errID']=='4'){
-                echo ("<h3>The current password you typed is not correct. Your password hasn't been changed. Please try again.</h3>");
+                echo ("<h1 id='actionSuccededOrFailed'>The current password you typed is not correct. Your password hasn't been changed. Please try again.</h1>");
             }else if($_GET['errID']=='5'){
-                echo ("<h3>Your new password wasn't the same twice. Please make sure you didn't mistype and try again.</h3>");
+                echo ("<h1 id='actionSuccededOrFailed'>Your new password wasn't the same twice. Please make sure you didn't mistype and try again.</h1>");
             }else if($_GET['errID']=='6'){
-                echo ("<h3></h3>");
+                echo ("<h1 id='actionSuccededOrFailed'>The file you provided is not an accepted format (only jpg, jpeg, png, gif). Post added without the image.</h1>");
+            }else if($_GET['errID']=='7'){
+                echo ("<h1 id='actionSuccededOrFailed'>The file already exists in the destination. Post added without the image.</h1>");
+            }else if($_GET['errID']=='8'){
+                echo ("<h1 id='actionSuccededOrFailed'>The file already exists in the destination. Post added without the image.</h1>");
             }else{
-                echo ("<h3>Unknown error please contact administrator</h3>");
+                echo ("<h1 id='actionSuccededOrFailed'>Unknown error please contact administrator</h1>");
             }
         }else{
-            echo ("<h3>Unknown error please contact administrator</h3>");
+            echo ("<h1 id='actionSuccededOrFailed'>Unknown error please contact administrator</h1>");
         }
 
-        echo ("<h3><a href='../user_home/index.php'> Back to home page</a></h3>");
+        echo ("<h1 id='actionSuccededOrFailed'><a href='../user_home/index.php'> Back to home page</a></h1>");
     }else{
         header('Location: ../user_home/index.php');
     }

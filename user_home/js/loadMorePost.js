@@ -25,7 +25,7 @@ $( document ).ready(function() {
 
                     if(currentLink.includes('facebook')){
                         //console.log("Facebook post");
-                        $("#albumposts").append("<div class='gallery-item'></div>");
+                        $(".userGallery").append("<div class='gallery-item'></div>");
                         $(".gallery-item:last-child").append("<div id='test' class=\"fb-post\"data-href=\""+ currentLink +" \" data-width=\"350\" data-height=\"350\"></div>");
                     }else if(currentLink.includes('twitter')){
                         //console.log("Twitter post");
@@ -33,18 +33,18 @@ $( document ).ready(function() {
                             tweetHTML = JSON.parse(tweet_data);
                             tweetHTML = tweetHTML['html'];
                            // console.log(tweetHTML);
-                            $("#albumposts").append("<div class='gallery-item'></div>");
+                            $(".userGallery").append("<div class='gallery-item'></div>");
                             $(".gallery-item:last-child").append(tweetHTML);
                         });
                     }else if(currentLink.includes('instagram')){
                        // instgrm.Embeds.process();
                         $.get("https://api.instagram.com/oembed?url="+currentLink+"&MAXWIDTH=350",function (insta_data) {
-                            $("#albumposts").append("<div class='gallery-item'></div>");
+                            $(".userGallery").append("<div class='gallery-item'></div>");
                             $(".gallery-item:last-child").append(insta_data['html']);
                             instgrm.Embeds.process();
                         })
                     }else{
-                        $("#albumposts").append("<div class='gallery-item'><h3>"+currentText+"</h3><img src='../__website_content/no_image.png'/></div>");
+                        $(".userGallery").append("<div class='gallery-item'><h3>"+currentText+"</h3><img src='../__website_content/no_image.png'/></div>");
                     }
                 }
                 FB.XFBML.parse();

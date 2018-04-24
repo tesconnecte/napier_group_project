@@ -27,14 +27,22 @@ if(!isset($_SESSION['userid'])){
 <div class="container">
       <h1>Add Post</h1><br>
       <div class="addPost">
-      <form class="accountSettings" method="post"  action="../__treatment/new_post.php">
+      <form class="accountSettings" method="post"  action="../__treatment/new_post.php" enctype="multipart/form-data">
 
         <div class="form-group">
           <label for="sel1">Select Album:</label>
           <select class="form-control ddPost" name="album">
             <?php
+            $albumSet = null;
+            if(isset($_GET['albumid'])){
+                $albumSet = $_GET['albumid'];
+            }
             foreach ($albums as $key => $currentAlbum) {
-              echo '<option value="'.$currentAlbum->getId().'">'.$currentAlbum->getName().'</option>';
+                if(($albumSet!=null)&&($albumSet==$currentAlbum->getId())){
+                    echo '<option value="'.$currentAlbum->getId().'" selected>'.$currentAlbum->getName().'</option>';
+                }else{
+                    echo '<option value="'.$currentAlbum->getId().'">'.$currentAlbum->getName().'</option>';
+                }
             }
             ?>
         </select>
@@ -52,15 +60,15 @@ if(!isset($_SESSION['userid'])){
             <label for="description">Description:</label>
             <input type="text" id="desc_field" placeholder="Give your post a description..." name="description"><br>
 
-            <label for="chooseFile">Choose file or photo:</label>
-            <input type="file" id="photo_field" placeholder="Choose a file or photo to upload..." name="file"><br>
+            <label for="chooseFile">Choose a Photo: (Max 2Mo or import will be denied)</label>
+            <input type="file" id="fileToUpload" placeholder="Choose a file or photo to upload..." name="fileToUpload" data-max-size="2000000"><br>
 
             <label for="text">Text:</label>
             <input type="text" id="text_field" placeholder="Give your post a text..." name="text"><br>
           </div>
-          <p>test</p>
+          <!--<p>test</p>-->
           <input type="text" id="url_field" placeholder="URL of Post..." name="link"><br>
-          <a id = "testButton" >Please work</a><br>
+          <!--<a id = "testButton" >Please work</a><br>-->
           <button id = "addButton" class="btn btn-primary">Add Post</button><br>
           <div id="preview"></div>
 

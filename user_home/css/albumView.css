@@ -28,6 +28,11 @@ body {
 }
 
 /*---------------- Bootstrap Carousel -----------------*/
+
+#notice_abv{
+    font-family: 'Indie Flower', sans-serif;
+    text-align: center;
+}
 #gallery {
   padding: 10px 0 0 50px;
   background-color: white;
@@ -42,17 +47,40 @@ body {
   padding: 10px;
 }
 
-.gallery-item {
-  width: 350px;
-  height: 350px;
-  float:left;
-  margin: 10px;
-  overflow: hidden;
-  cursor: pointer;
-  border: 10px solid #fff;
-  border-radius: 5px;
-  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.5);
+#gallery {
+    padding: 10px 0 0 50px;
+    background-color: white;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border: 2px solid blue;
 }
+
+#gallery h3{
+    text-align: center;
+    padding: 10px;
+}
+
+.gallery-item {
+    width: 350px;
+    height: 350px;
+    float:left;
+    margin: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 10px solid #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.5);
+}
+
+.slideContainer {
+    position: relative;
+}
+
+.gallery-item:hover {
+    opacity: 0.5;
+}
+
 
 .slideContainer {
     position: relative;
@@ -163,11 +191,6 @@ body {
 
 /*-------------------user page-----------------------*/
 
-#actionSuccededOrFailed{
-    text-align: center;
-    font-family: 'Indie Flower', sans-serif;
-}
-
 #albums{
     width: 100%;
     display: inline-block;
@@ -182,13 +205,11 @@ body {
 }
 
 .userGallery {
-    width: 760px;
-    padding: 10px;
-    background: #fff;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+    width: 100%;
     display: inline-block;
     vertical-align: top;
-    margin: 10px;
+    text-align: center;
+    margin-top: 20px;
 }
 
 .userGallery div img {
@@ -349,6 +370,12 @@ body {
 }
 
 /*---------------- New Album -----------------*/
+
+.albumposts{
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+}
 
 .newAlbum {
   float: left;

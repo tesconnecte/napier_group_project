@@ -33,12 +33,6 @@ if(!isset($_SESSION['userid'])){
 
     include("../header/header.php");
     ?>
-    <html>
-    <head>
-        <link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">
-        <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5"async></script>
-        <script async defer src="//www.instagram.com/embed.js"></script>
-    </head>
     <body>
 
 <div class="container">

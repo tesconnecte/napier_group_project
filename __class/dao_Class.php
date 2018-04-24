@@ -194,6 +194,7 @@
                                                 where email=:email");
             $req->execute(array(':email' => $email));
             $result = $req->fetchAll();
+            $user=null;
             if(!empty($result)){
                 $user = new User($result[0]['id'],$result[0]['firstname'],$result[0]['surname'],$result[0]['email'],'Hidden',$result[0]['birthdate'],null);
             }
@@ -205,6 +206,10 @@
         {
             $req = $this->db->prepare("insert into user(firstname,surname,email,password,birthdate) values(:fn,:sn,:em,:pw,STR_TO_DATE(:bd,'%d-%m-%Y'));");
             $req->execute(array(':fn' => $firstName,':sn' => $surname,':em' => $email, ':pw' => $password, ':bd' => $birthDate));
+
+            $user_id = $this->db->lastInsertId();
+            mkdir("../user_content/".$user_id,0600);
+
         }
 
         // Creates an album and adds its associated user to the users that have access to this album
@@ -220,7 +225,14 @@
 
             if(!empty($result2)) {
                 $req3 = $this->db->prepare("insert into useralbums values(:user,:albumId);");
-                $req3->execute(array(':user' => $user, ':albumId' => $result2[0]['id']));
+                $param = array(':user' => $user, ':albumId' => $result2[0]['id']);
+                $req3->execute($param);
+
+                if($isPublic==true){
+                    mkdir("../user_content/".$param[':user']."/".$param[':albumId'],0644,true);
+                }else {
+                    mkdir("../user_content/".$param[':user']."/".$param[':albumId'],0600,true);
+                }
             }
         }
 
@@ -229,6 +241,7 @@
 
             $req = $this->db->prepare("insert into personnalpost(link,description,image,text) values(:link, :desc, :image, :text);");
             $req->execute(array(':link' => $link, ':desc' => $description, ':image' => $image, ':text' => $text));
+            $postId = $this->db->lastInsertId();
 
             $req2 = $this->db->prepare("select MAX(id) as id
                     from personnalpost ");
@@ -239,6 +252,7 @@
                 $req3 = $this->db->prepare("insert into albumpost values(:albumId,:postId);");
                 $req3->execute(array(':albumId' => $albumid, ':postId' => $result2[0]['id']));
             }
+            return $postId;
         }
 
         function deleteAlbum($id)

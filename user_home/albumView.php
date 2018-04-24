@@ -43,7 +43,7 @@ if(!isset($_GET['id'])){
     }
 
     include("../header/htmlhead.php");
-    echo('<link rel="stylesheet" href="css/style.css" alt="style" width="50 px" height="50px">');
+    echo('<link rel="stylesheet" href="css/albumView.css" alt="style" width="50 px" height="50px">');
     echo('<script type="text/javascript" src="../user_home/js/loadMorePost.js"></script>');
     echo('<script type="text/javascript" src="../user_home/js/insta_post_through_js.js"></script>');
     include("../header/header.php");
@@ -63,8 +63,8 @@ if(!isset($_GET['id'])){
 
             <!--     Main album gallery    -->
 
-            <h3>Click to edit posts</h3>
-            <div id="albumposts">
+            <h1 id="notice_abv">Click to edit posts</h1>
+            <div class="userGallery">
             <?php
 
 
@@ -95,15 +95,23 @@ if(!isset($_GET['id'])){
                                     echo("<div class='gallery-item' id='insta-".$nbInstaPosts."'><script type='text/javascript'>loadInstaPost('".$link."',".$nbInstaPosts.");</script> </div>");
                                     $nbInstaPosts++;
                                 } else {
-                                    echo ("<a href=\"editPost.php?id=".$current_post->getId()."\"");
+                                    echo ("<a href=\"editPost.php?id=".$current_post->getId()."\">");
                                     echo(" <div class='gallery-item'><h3>" . $current_post->getText() . "</h3>");
-                                    echo(" <img src='../__website_content/no_image.png'/></div>");
+                                    if($current_post->getImage()!="NULL"){
+                                        echo(" <img src='../user_content/".$_SESSION['userid']."/".$album->getId()."/".$current_post->getId().".".$current_post->getImage()."'></div>");
+                                    }else{
+                                        echo(" <img src='../__website_content/no_image.png'/></div>");
+                                    }
                                     echo ('</a>');
                                 }
                             } else {
-                                echo ('<a href="editPost.php?id="'.$current_post->getId().'"');
+                                echo ('<a href="editPost.php?id="'.$current_post->getId().'">');
                                 echo(" <div class='gallery-item'><h3>" . $current_post->getText . "</h3>");
-                                echo(" <img src='../__website_content/no_image.png'/></div>");
+                                if($current_post->getImage()!="NULL"){
+                                    echo(" <img src='../user_content/".$_SESSION['userid']."/".$album->getId()."/".$current_post->getId().".".$current_post->getImage()."'></div>");
+                                }else{
+                                    echo(" <img src='../__website_content/no_image.png'/></div>");
+                                }
                                 echo ('</a>');
                             }
                         }
