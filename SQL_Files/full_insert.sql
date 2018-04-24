@@ -27,33 +27,33 @@ INSERT INTO USERALBUMS  VALUES (5,7);
 INSERT INTO USERALBUMS  VALUES (6,7);
 
 
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('Local','Cold Play','ColdPlay show at Musilac !','/user_data/1/img1.jpg');
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('Local','Indochine','Indochine show at Musilac !','/user_data/1/img2.jpg');
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('Local','Depeche mode','Depeche mode show at Musilac !','/user_data/1/img3.jpg');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('Local','Cold Play','ColdPlay show at Musilac !','NULL');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('Local','Indochine','Indochine show at Musilac !','NULL');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('Local','Depeche mode','Depeche mode show at Musilac !','NULL');
 
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','Big Ben','Just arrived in London !','/user_data/2/img1.jpg');
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','Buckingham Palace','Where s the queen ???','/user_data/2/img2.jpg');
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','Trafalgar Square','Love this city <3','/user_data/2/img3.jpg');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','Big Ben','Just arrived in London !','NULL');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','Buckingham Palace','Where s the queen ???','NULL');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','Trafalgar Square','Love this city <3','NULL');
 
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','Time square','Just arrived in New york !','/user_data/3/img1.jpg');
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','Empire state building','Impressively high','/user_data/3/img2.jpg');
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','White House','Love this city <3','/user_data/3/img3.jpg');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','Time square','Just arrived in New york !','NULL');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','Empire state building','Impressively high','NULL');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','White House','Love this city <3','NULL');
 
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','Eiffel Tower !','Just arrived in Paris !','/user_data/4/img1.jpg');
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','Champs Elysés','The most beautiful avenue in the world','/user_data/4/img2.jpg');
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','River seine','Chiling next to the seine','/user_data/4/img3.jpg');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','Eiffel Tower !','Just arrived in Paris !','NULL');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','Champs Elysés','The most beautiful avenue in the world','NULL');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','River seine','Chiling next to the seine','NULL');
 
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','All the fam !','Ready to party with the whole family','/user_data/5/img1.jpg');
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','20th bday cake','Look a that cake :O','/user_data/5/img2.jpg');
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','Partying','And now partying with pals !','/user_data/5/img3.jpg');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','All the fam !','Ready to party with the whole family','NULL');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','20th bday cake','Look a that cake :O','NULL');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES  ('Local','Partying','And now partying with pals !','NULL');
 
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('Local','Meme 1','got me evry time','/user_data/6/img1.jpg');
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('Local','Meme 2','Laughed so hard','/user_data/6/img2.jpg');
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('Local','Meme 3','I cant forget this one','/user_data/3/img3.jpg');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('Local','Meme 1','got me evry time','NULL');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('Local','Meme 2','Laughed so hard','NULL');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('Local','Meme 3','I cant forget this one','NULL');
 
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('https://www.instagram.com/p/BhZRfRnFl0V/','Instagram post','Instagram post','image');
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('https://www.facebook.com/uniladmag/videos/4733917056631316/','Facebook post','Facebook post','image');
-INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('https://twitter.com/PolaroidFrance/status/984753026048102400','Twitter post','Twitter post','image');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('https://www.instagram.com/p/BhZRfRnFl0V/','Instagram post','Instagram post','NULL');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('https://www.facebook.com/uniladmag/videos/4733917056631316/','Facebook post','Facebook post','NULL');
+INSERT INTO PERSONNALPOST(link, text,description,image) VALUES ('https://twitter.com/PolaroidFrance/status/984753026048102400','Twitter post','Twitter post','NULL');
 
 INSERT INTO ALBUMPOST VALUES (1,1);
 INSERT INTO ALBUMPOST VALUES (1,2);
