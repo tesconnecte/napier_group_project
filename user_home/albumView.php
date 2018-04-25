@@ -7,6 +7,7 @@
  */
 session_start();
 require_once ("../__class/autoload_Class.php");
+require_once('../__class/twitter-api-php-master/TwitterAPIExchange.php');
 
 if(!isset($_SESSION['userid'])){
     header('Location: ../home/logIn.php?error=2');
@@ -14,6 +15,7 @@ if(!isset($_SESSION['userid'])){
 if(!isset($_GET['id'])){
     header('Location: ../user_home/index.php');
 }else {
+
     try {
         $dao = new DAO();
         $useralbums = $dao->getAlbums($_SESSION['userid']);
@@ -82,6 +84,26 @@ if(!isset($_GET['id'])){
                                 if (strpos($link, 'facebook') !== false) {
                                     echo("<div class=\"fb-post gallery-item\"data-href=\"" . $link . "\" data-width=\"350\" data-height=\"350\"></div>");
                                 } elseif (strpos($link, 'twitter') !== false) {
+                                    $urlTwitter = $link;
+                                    $id = substr($urlTwitter, strrpos($urlTwitter, "/") + 1); //gets id of the tweet using the url
+
+                                    $settings = array(
+                                        'oauth_access_token' => "970953751258390528-Z3ETeETyI0Ey00VOVtCDtb5PmcYCIET",
+                                        'oauth_access_token_secret' => "41VdBHgK8m46SFOxVpK71jJGEmJdzdp4eQT4cLDGTQ5cL",
+                                        'consumer_key' => "axntszug8MrAJxHtmPvuNRpK0",
+                                        'consumer_secret' => "u0tuuJJ2DSLiuIugVW95UGhTKSXNDGtieIlP83Q5fM6gcrCWdD"
+                                    );
+
+                                    $req = "https://api.twitter.com/1.1/statuses/show.json";
+                                    $getfield = '?id=' . $id;
+                                    $requestMethod = "GET";
+
+                                    $twitter = new TwitterAPIExchange($settings);
+                                    $parameters = $twitter->setGetfield($getfield)
+                                        ->buildOauth($req, $requestMethod)
+                                        ->performRequest(); // Gets all the attributes and data of a tweet
+
+                                    $parameters = json_decode($parameters, true);
                                     $curl = curl_init();
                                     curl_setopt_array($curl, array(
                                         CURLOPT_RETURNTRANSFER => 1,
@@ -90,7 +112,12 @@ if(!isset($_GET['id'])){
                                     $result = curl_exec($curl);
                                     curl_close($curl);
                                     $result = json_decode($result, true);
-                                    echo("<div class='gallery-item'>" . $result['html'] . "</div>"); // Displays the embedded tweet
+                                    if (isset($parameters['errors'][0]['code'])) {
+                                            echo(" <div class='gallery-item'><h3>" . $current_post->getText() . "</p><p>" . $current_post->getDescription() . "</h3>");
+                                    }
+                                    else {
+                                        echo("<div class='gallery-item'>" . $result['html'] . "</div>"); // Displays the embedded tweet
+                                    }
                                 } elseif (strpos($link, 'instagram') !== false) {
                                     echo("<div class='gallery-item' id='insta-".$nbInstaPosts."'><script type='text/javascript'>loadInstaPost('".$link."',".$nbInstaPosts.");</script> </div>");
                                     $nbInstaPosts++;
@@ -106,7 +133,7 @@ if(!isset($_GET['id'])){
                                 }
                             } else {
                                 echo ('<a href="editPost.php?id="'.$current_post->getId().'">');
-                                echo(" <div class='gallery-item'><h3>" . $current_post->getText . "</h3>");
+                                echo(" <div class='gallery-item'><h3>" . $current_post->getText() . "</h3>");
                                 if($current_post->getImage()!="NULL"){
                                     echo(" <img src='../user_content/".$_SESSION['userid']."/".$album->getId()."/".$current_post->getId().".".$current_post->getImage()."'></div>");
                                 }else{
