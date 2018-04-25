@@ -11,10 +11,18 @@ switch ($_POST["social"]) {
     echo '<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="'.$link.'" data-instgrm-version="8" ></blockquote>';
     break;
   case 'twitter':
-    echo "<p>not implemented yet</p>";
+  $curl = curl_init();
+  curl_setopt_array($curl, array(
+      CURLOPT_RETURNTRANSFER => 1,
+      CURLOPT_URL => 'https://publish.twitter.com/oembed?url=' . $link . '&maxwidth=350&maxheight=350'
+  ));
+  $result = curl_exec($curl);
+  curl_close($curl);
+  $result = json_decode($result, true);
+  echo("<div class='gallery-item'>" . $result['html'] . "</div>"); // Displays the embedded tweet
     break;
 
   default:
-    echo "<p>not implemented yet</p>";
+    echo "";
     break;
 }

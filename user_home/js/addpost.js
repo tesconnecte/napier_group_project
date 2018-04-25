@@ -30,30 +30,17 @@ $(document).ready(function () {
   //updating the preview of the post based on the link
   $("#url_field").change(function() {
     var url = $("#url_field").val();
-    var words = url.split(".");
+    var temp = url.split("/").join(".");
+    var words = temp.split(".");
     var names = ["facebook","twitter","instagram"];
     var selected = "";
     var i =0;
     while (i < words.length && selected == "") {
-      if(jQuery.inArray(words[i],words)){
+      if(jQuery.inArray(words[i],names)!=-1){
         selected = words[i];
       }
       i++;
     }
-    switch (selected) {
-      case "facebook":
-        $("#preview").load("../user_home/displayEmbed.php", {url:url, social:selected}, function(){
-          alert($("#preview p").length);
-        });
-        break;
-      default:
-
-    }
-
-    $("#testButton").click( function(){
-      if (mode == "existing") {
-        alert($("#preview:first-child").length);
-      }
-    });
+    $("#preview").load("../user_home/displayEmbed.php", {url:url, social:selected});
   });
 });

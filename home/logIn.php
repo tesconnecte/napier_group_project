@@ -30,7 +30,7 @@ include ("../header/header.php");
 <form class="logIn" method="post"  action="../__treatment/login.php">
 
     <label for="uname">Username</label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <input type="text" placeholder="Enter Email" name="uname" required>
     <label for="pword">Password</label>
     <input type="password" placeholder="Enter Password" name="pword" required><br>
 
