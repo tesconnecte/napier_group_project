@@ -208,7 +208,7 @@
             $req->execute(array(':fn' => $firstName,':sn' => $surname,':em' => $email, ':pw' => $password, ':bd' => $birthDate));
 
             $user_id = $this->db->lastInsertId();
-            mkdir("../user_content/".$user_id,0600);
+            mkdir("../user_content/".$user_id);
 
         }
 
@@ -229,9 +229,9 @@
                 $req3->execute($param);
 
                 if($isPublic==true){
-                    mkdir("../user_content/".$param[':user']."/".$param[':albumId'],0644,true);
+                    mkdir("../user_content/".$param[':user']."/".$param[':albumId'],true);
                 }else {
-                    mkdir("../user_content/".$param[':user']."/".$param[':albumId'],0600,true);
+                    mkdir("../user_content/".$param[':user']."/".$param[':albumId'],true);
                 }
             }
         }
