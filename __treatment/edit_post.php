@@ -26,7 +26,7 @@ if(isset($_SESSION['userid'])){
             }
 
             if($ownsAlbum==true){
-                $dao->updatePost($_GET['id'],$_POST['link'],$_POST['description'],$_POST['image'],$_POST['text']);
+                $dao->updatePost($_GET['id'],$_POST['link'],$_POST['description'],'NULL',$_POST['text']);
                 header('Location: ../user_home/successActionUser.php?action=7');
             }else{
                 header('Location: ../user_home/errorActionUser.php?errType=user&errID=3');
